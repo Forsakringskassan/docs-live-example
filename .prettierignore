@@ -1,0 +1,13 @@
+# owned by tooling
+package.json
+package-lock.json
+etc/*.api.md
+
+# generated files
+CHANGELOG.md
+
+# build artifacts
+coverage/
+dist/
+node_modules/
+

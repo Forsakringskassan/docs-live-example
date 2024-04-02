@@ -1,0 +1,116 @@
+{
+  "name": "@forsakringskassan/docs-live-example",
+  "version": "1.2.0",
+  "description": "Components used for live examples",
+  "keywords": [
+    "documentation"
+  ],
+  "homepage": "https://github.com/Forsakringskassan/docs-live-example",
+  "bugs": "https://github.com/Forsakringskassan/docs-live-example/issues",
+  "repository": {
+    "url": "https://github.com/Forsakringskassan/docs-live-example.git"
+  },
+  "license": "MIT",
+  "author": "Försäkringskassan",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./htmlvalidate": "./htmlvalidate/index.js",
+    "./dist/main.css": "./dist/main.css"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "main.css",
+    "htmlvalidate",
+    "!**/*.spec.js",
+    "!**/*.spec.d.ts"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "rimraf dist",
+    "build": "vue-tsc -b && node build.js",
+    "html-validate": "html-validate --ext vue,html src",
+    "prepack": "release-prepack --bundle",
+    "postpack": "release-postpack package.json",
+    "prepublishOnly": "release-prepublish --bundle",
+    "prepare": "husky install",
+    "pretest": "run-s prettier:check eslint html-validate",
+    "test": "jest",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "lint": "run-s prettier:check eslint html-validate",
+    "lint:fix": "run-s prettier:write eslint:fix",
+    "eslint": "eslint --cache .",
+    "eslint:fix": "eslint --fix ."
+  },
+  "commitlint": {
+    "extends": "@forsakringskassan/commitlint-config/no-jira"
+  },
+  "lint-staged": {
+    "*.{json,md,css,scss,html}": "prettier --write",
+    "*.{js,cjs,mjs,vue,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "prettier": "@forsakringskassan/prettier-config",
+  "release": {
+    "extends": "@forsakringskassan/semantic-release-config"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.[jt]s",
+      "!**/*.spec.[jt]s",
+      "!**/*.d.ts",
+      "!**/index.[jt]s",
+      "!**/__fixtures__/**"
+    ],
+    "preset": "@forsakringskassan/jest-config"
+  },
+  "dependencies": {
+    "esbuild-plugin-vue3": "0.3.2",
+    "highlight.js": "11.9.0"
+  },
+  "devDependencies": {
+    "@forsakringskassan/commitlint-config": "1.2.1",
+    "@forsakringskassan/eslint-config": "10.3.0",
+    "@forsakringskassan/eslint-config-cli": "10.3.0",
+    "@forsakringskassan/eslint-config-jest": "10.3.0",
+    "@forsakringskassan/eslint-config-typescript": "10.3.0",
+    "@forsakringskassan/eslint-config-vue": "10.3.0",
+    "@forsakringskassan/jest-config": "29.4.0",
+    "@forsakringskassan/prettier-config": "1.4.0",
+    "@html-validate/release-scripts": "4.1.10",
+    "@types/jest": "29.5.6",
+    "@types/prettier": "2.7.3",
+    "esbuild": "0.14.54",
+    "glob": "10.3.10",
+    "html-validate": "8.7.0",
+    "html-validate-vue": "6.0.4",
+    "husky": "8.0.3",
+    "npm-pkg-lint": "2.2.0",
+    "npm-run-all": "4.1.5",
+    "rimraf": "5.0.5",
+    "sass": "1.69.0",
+    "typescript": "5.0.4",
+    "vue": "3.3.4",
+    "vue-tsc": "1.8.15"
+  },
+  "peerDependencies": {
+    "html-validate": ">= 7.9.0",
+    "prettier": "2.8.8",
+    "vue": "^3"
+  },
+  "peerDependenciesMeta": {
+    "html-validate": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">= 16"
+  }
+}

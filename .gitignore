@@ -1,0 +1,7 @@
+*.tgz
+.jest-cache/
+.eslintcache
+coverage/
+dist/
+node_modules/
+test-results/
