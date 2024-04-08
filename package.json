@@ -86,7 +86,7 @@
     "@forsakringskassan/prettier-config": "2.0.1",
     "@html-validate/release-scripts": "6.3.1",
     "@types/jest": "29.5.12",
-    "@types/prettier": "2.7.3",
+    "@types/prettier": "3.0.0",
     "esbuild": "0.20.2",
     "glob": "10.3.12",
     "html-validate": "8.18.1",
