@@ -2,14 +2,14 @@
     "folders": [
         {
             "path": ".",
-            "name": "@forsakringskassan/docs-live-example"
-        }
+            "name": "@forsakringskassan/docs-live-example",
+        },
     ],
     "settings": {
         "editor.formatOnSave": true,
         "editor.formatOnPaste": true,
         "editor.codeActionsOnSave": {
-            "source.fixAll.eslint": true
+            "source.fixAll.eslint": true,
         },
         "eslint.enable": true,
         "prettier.requireConfig": true,
@@ -22,11 +22,11 @@
             "typescript",
             "typescriptreact",
             "vue",
-            "html"
+            "html",
         ],
         "[vue]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-        }
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+        },
     },
     "extensions": {
         "recommendations": [
@@ -37,7 +37,7 @@
             "eg2.vscode-npm-script",
             "esbenp.prettier-vscode",
             "octref.vetur",
-            "jebbs.plantuml"
-        ]
-    }
+            "jebbs.plantuml",
+        ],
+    },
 }
