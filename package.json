@@ -77,11 +77,11 @@
   },
   "devDependencies": {
     "@forsakringskassan/commitlint-config": "1.2.1",
-    "@forsakringskassan/eslint-config": "10.3.5",
-    "@forsakringskassan/eslint-config-cli": "10.3.0",
-    "@forsakringskassan/eslint-config-jest": "10.3.0",
-    "@forsakringskassan/eslint-config-typescript": "10.3.0",
-    "@forsakringskassan/eslint-config-vue": "10.3.3",
+    "@forsakringskassan/eslint-config": "11.0.0",
+    "@forsakringskassan/eslint-config-cli": "11.0.0",
+    "@forsakringskassan/eslint-config-jest": "11.0.0",
+    "@forsakringskassan/eslint-config-typescript": "11.0.0",
+    "@forsakringskassan/eslint-config-vue": "11.0.0",
     "@forsakringskassan/jest-config": "29.5.0",
     "@forsakringskassan/prettier-config": "1.4.0",
     "@html-validate/release-scripts": "6.3.1",
@@ -103,7 +103,7 @@
   },
   "peerDependencies": {
     "html-validate": ">= 7.9.0",
-    "prettier": "2.8.8",
+    "prettier-2": "npm:prettier@2.8.8",
     "vue": "^3.4.15"
   },
   "peerDependenciesMeta": {

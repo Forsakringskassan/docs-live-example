@@ -1,5 +1,5 @@
-import * as prettier from "prettier";
-import htmlParser from "prettier/parser-html";
+import * as prettier from "prettier-2";
+import htmlParser from "prettier-2/parser-html";
 import hljs from "highlight.js/lib/core";
 import html from "highlight.js/lib/languages/xml";
 
