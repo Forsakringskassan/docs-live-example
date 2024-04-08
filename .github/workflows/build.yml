@@ -24,9 +24,29 @@ jobs:
             - name: HTML-Validate
               run: npm run html-validate
             - name: Jest
-              run: npm exec jest
+              run: node --experimental-vm-modules node_modules/jest/bin/jest.js
             - name: Build
               run: |
                   npm run --if-present build
                   npm pack
                   npm exec npm-pkg-lint
+
+    prettier:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                version: [2.x, 3.x]
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install dependencies
+              run: npm ci
+            - name: Install prettier v${{ matrix.version }}
+              run: |
+                  npm rm @forsakringskassan/eslint-config # not used for this compatibility test and conflicts with prettier v2
+                  npm install --no-save $(npx -y npm-min-peer prettier --major ${{ matrix.version }} --with-name)
+            - name: Jest
+              run: node --experimental-vm-modules node_modules/jest/bin/jest.js
