@@ -103,7 +103,7 @@
   },
   "peerDependencies": {
     "html-validate": ">= 7.9.0",
-    "prettier-2": "npm:prettier@2.8.8",
+    "prettier-2": "npm:prettier@3.2.5",
     "vue": "^3.4.15"
   },
   "peerDependenciesMeta": {
