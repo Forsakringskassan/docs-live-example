@@ -1,5 +1,6 @@
 import { type Options } from "prettier";
-import * as prettier from "prettier/standalone";
+import prettier from "prettier/standalone";
+import htmlPlugin from "prettier/parser-html";
 import hljs from "highlight.js/lib/core";
 import html from "highlight.js/lib/languages/xml";
 
@@ -7,6 +8,7 @@ hljs.registerLanguage("html", html);
 
 const prettierConfig: Options = {
     parser: "html",
+    plugins: [htmlPlugin],
     singleQuote: false,
     arrowParens: "always",
     tabWidth: 4,

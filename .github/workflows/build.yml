@@ -46,7 +46,7 @@ jobs:
               run: npm ci
             - name: Install prettier v${{ matrix.version }}
               run: |
-                  npm rm @forsakringskassan/eslint-config # not used for this compatibility test and conflicts with prettier v2
+                  npm rm @forsakringskassan/eslint-config @forsakringskassan/prettier-config # not used for this compatibility test and conflicts with prettier v2
                   npm install --no-save $(npx -y npm-min-peer prettier --major ${{ matrix.version }} --with-name)
             - name: Jest
               run: node --experimental-vm-modules node_modules/jest/bin/jest.js
