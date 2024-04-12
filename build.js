@@ -7,21 +7,36 @@ async function build() {
     const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
     const { peerDependencies } = pkg;
 
-    const result = await esbuild.build({
+    const options = {
         entryPoints: ["src/index.ts"],
-        outdir: "dist",
+        outdir: "dist/cjs",
         bundle: true,
-        format: "cjs",
-        platform: "node",
+        platform: "browser",
         logLevel: "info",
-        metafile: true,
         plugins: [vuePlugin()],
         external: ["vue", "typescript", ...Object.keys(peerDependencies)],
+    };
+
+    await esbuild.build({
+        ...options,
+        outdir: "dist/cjs",
+        format: "cjs",
+    });
+
+    const result = await esbuild.build({
+        ...options,
+        outdir: "dist/esm",
+        format: "esm",
+        metafile: true,
     });
     console.log(await esbuild.analyzeMetafile(result.metafile));
 
     const sassResult = await sass.compileAsync("main.scss");
     await fs.writeFile("dist/main.css", sassResult.css, "utf-8");
+
+    const pkgJson = (type) => JSON.stringify({ type }, null, 2);
+    await fs.writeFile("dist/cjs/package.json", pkgJson("commonjs"), "utf-8");
+    await fs.writeFile("dist/esm/package.json", pkgJson("module"), "utf-8");
 }
 
 build().catch((err) => {
