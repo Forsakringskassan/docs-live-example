@@ -15,6 +15,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "sass": "./dist/main.css",
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
