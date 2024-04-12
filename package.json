@@ -1,6 +1,6 @@
 {
   "name": "@forsakringskassan/docs-live-example",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Components used for live examples",
   "keywords": [
     "documentation"

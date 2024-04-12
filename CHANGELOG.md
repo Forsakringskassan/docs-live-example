@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.4.1](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.0...v1.4.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* force prettier html plugin as needed by standalone version ([717d1a7](https://github.com/Forsakringskassan/docs-live-example/commit/717d1a770c6a30a97e9771a616910bcc78d2f112))
+* force prettier standalone version ([d6e39f5](https://github.com/Forsakringskassan/docs-live-example/commit/d6e39f5e9addb4587e5dac5b8406595993a20d00))
+
 ## [1.4.0](https://github.com/Forsakringskassan/docs-live-example/compare/v1.3.0...v1.4.0) (2024-04-10)
 
 
