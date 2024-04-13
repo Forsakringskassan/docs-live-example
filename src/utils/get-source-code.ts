@@ -6,7 +6,7 @@ import { stripComments } from "./strip-comments";
  */
 export interface SourceCodeOptions {
     /** Whenever to get the original sourcecode (as passed into live-example component) or the rendered final HTML */
-    readonly language: "original" | "html";
+    readonly language: "original" | "rendered";
 
     /** Original template (sourcecode as passed into live-example component) */
     readonly template: string;

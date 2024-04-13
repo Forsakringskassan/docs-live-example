@@ -1,79 +1,30 @@
 <template>
     <div class="live-example__container">
         <div ref="example" class="live-example__example">
-            <live-vue-code
-                v-if="templateLanguage === 'vue'"
-                :components
-                :template
-                :livedata
-                :livemethods
-            ></live-vue-code>
+            <div v-if="templateLanguage === 'vue'">
+                <live-vue-code :components :template :livedata :livemethods></live-vue-code>
+            </div>
             <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
-            <pre v-else-if="templateLanguage === 'html'" v-html="template"></pre>
-            <pre v-else>Unknown language, cannot render example</pre>
+            <div v-else-if="templateLanguage === 'html'" v-html="template"></div>
+            <div v-else><pre>Unknown language, cannot render example</pre></div>
         </div>
         <div class="live-example__controls">
             <slot></slot>
         </div>
-        <div class="live-example__code">
-            <div class="live-example__code-toggle">
-                <button
-                    type="button"
-                    class="button button--discrete"
-                    :aria-controls="id('code-expand')"
-                    :aria-expanded="codeExpand.isOpen ? 'true' : 'false'"
-                    @click="onToggleCode"
-                >
-                    <i class="icon icon--code"></i>
-                    {{ codeToggleText }}
-                </button>
-            </div>
-            <div :id="id('code-expand')" ref="expandable" class="collapsed">
-                <div class="live-example__code-languages">
-                    <fieldset class="fieldset radio-button-group radio-button-group--horizontal">
-                        <legend class="label fieldset__label">Kodspråk</legend>
-                        <div class="fieldset__content radio-button-group__content">
-                            <div v-if="templateLanguage === 'vue'" class="radio-button">
-                                <input
-                                    :id="id('lang-vue')"
-                                    v-model="codeLanguage"
-                                    type="radio"
-                                    class="radio-button__input"
-                                    name="code"
-                                    value="vue"
-                                />
-                                <label :for="id('lang-vue')" class="radio-button__label"> Vue </label>
-                            </div>
-                            <div class="radio-button">
-                                <input
-                                    :id="id('lang-html')"
-                                    v-model="codeLanguage"
-                                    type="radio"
-                                    class="radio-button__input"
-                                    name="code"
-                                    value="html"
-                                />
-                                <label :for="id('lang-html')" class="radio-button__label"> HTML </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-                <!-- eslint-disable-next-line vue/no-v-html -- expected to show highlighted markup -->
-                <pre v-html="sourceCode"></pre>
-            </div>
+        <div v-if="exampleElement" class="live-example__code">
+            <live-example-sourcecode :element="exampleElement" :template :template-language></live-example-sourcecode>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
+import LiveExampleSourcecode from "./LiveExampleSourcecode.vue";
 import LiveVueCode from "./live-vue-code";
-import { type ExpandAnimation, expandAnimation } from "./expand-animation";
-import { generateId, getSourceCode } from "./utils";
 
 export default defineComponent({
     name: "LiveExample",
-    components: { LiveVueCode },
+    components: { LiveExampleSourcecode, LiveVueCode },
     props: {
         /**
          * Explicitly render example in given language.
@@ -126,17 +77,7 @@ export default defineComponent({
         return {
             /** Language declared by parent element via `data-language`, if any */
             parentLanguage: "",
-            idPrefix: generateId(this.template),
-            /** Language selected by user to view sourcecode in */
-            codeLanguage: "html",
-            codeExpand: {
-                isOpen: false,
-                toggle() {
-                    /* do nothing */
-                },
-            } as ExpandAnimation,
-            /** Sourcecode to present to user */
-            sourceCode: "",
+            exampleElement: undefined as HTMLElement | undefined,
         };
     },
     computed: {
@@ -159,30 +100,6 @@ export default defineComponent({
             const hasChildComponents = Object.keys(this.components).length > 0;
             return hasChildComponents ? "vue" : "html";
         },
-        codeToggleText(): string {
-            return this.codeExpand.isOpen ? "Dölj kod" : "Visa kod";
-        },
-        exampleElement(): HTMLElement {
-            return this.$refs.example as HTMLElement;
-        },
-        expandableElement(): HTMLElement {
-            return this.$refs.expandable as HTMLElement;
-        },
-    },
-    watch: {
-        template: {
-            immediate: false,
-            handler(template) {
-                this.idPrefix = generateId(template);
-                this.updateSourceCode();
-            },
-        },
-        codeLanguage: {
-            immediate: false,
-            handler() {
-                this.updateSourceCode();
-            },
-        },
     },
     mounted() {
         /* try to fetch template language from a parent element */
@@ -191,40 +108,7 @@ export default defineComponent({
             this.parentLanguage = parent.dataset.language ?? "";
         }
 
-        /* prefer to display sourcecode as original vue code if the language is
-         * set to vue */
-        if (this.templateLanguage === "vue") {
-            this.codeLanguage = "vue";
-        }
-
-        this.codeExpand = expandAnimation(this.expandableElement);
-        this.updateSourceCode();
-    },
-    methods: {
-        id(suffix: string): string {
-            return `${this.idPrefix}--${suffix}`;
-        },
-        onToggleCode(): void {
-            this.codeExpand.toggle();
-        },
-        async updateSourceCode(): Promise<void> {
-            await this.$nextTick();
-            this.sourceCode = await getSourceCode({
-                language: this.codeLanguage === "html" ? "html" : "original",
-                template: this.template,
-                element: this.exampleElement,
-            });
-        },
+        this.exampleElement = this.$refs.example as HTMLElement;
     },
 });
 </script>
-
-<style scoped>
-.collapsed {
-    display: none;
-}
-
-.collapsed[aria-expanded="true"] {
-    display: block;
-}
-</style>

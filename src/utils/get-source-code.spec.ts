@@ -20,10 +20,10 @@ it('should return original template when language is "original"', async () => {
     `);
 });
 
-it('should return rendered template when language is "html"', async () => {
+it('should return rendered template when language is "rendered"', async () => {
     expect.assertions(1);
     const result = await getSourceCode({
-        language: "html",
+        language: "rendered",
         template,
         element,
     });
@@ -40,7 +40,7 @@ it("should strip html comments from rendered template", async () => {
         <p>lorem ipsum</p>
     `;
     const result = await getSourceCode({
-        language: "html",
+        language: "rendered",
         template,
         element,
     });
