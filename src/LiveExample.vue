@@ -20,7 +20,7 @@
                 <button
                     type="button"
                     class="button button--discrete"
-                    :aria-controls="idPrefix + '-code-expand'"
+                    :aria-controls="id('code-expand')"
                     :aria-expanded="codeExpand.isOpen ? 'true' : 'false'"
                     @click="onToggleCode"
                 >
@@ -28,32 +28,32 @@
                     {{ codeToggleText }}
                 </button>
             </div>
-            <div :id="idPrefix + '-code-expand'" ref="expandable" class="collapsed">
+            <div :id="id('code-expand')" ref="expandable" class="collapsed">
                 <div class="live-example__code-languages">
                     <fieldset class="fieldset radio-button-group radio-button-group--horizontal">
                         <legend class="label fieldset__label">Kodspråk</legend>
                         <div class="fieldset__content radio-button-group__content">
                             <div v-if="templateLanguage === 'vue'" class="radio-button">
                                 <input
-                                    :id="idPrefix + '-lang-vue'"
+                                    :id="id('lang-vue')"
                                     v-model="codeLanguage"
                                     type="radio"
                                     class="radio-button__input"
                                     name="code"
                                     value="vue"
                                 />
-                                <label :for="idPrefix + '-lang-vue'" class="radio-button__label"> Vue </label>
+                                <label :for="id('lang-vue')" class="radio-button__label"> Vue </label>
                             </div>
                             <div class="radio-button">
                                 <input
-                                    :id="idPrefix + '-lang-html'"
+                                    :id="id('lang-html')"
                                     v-model="codeLanguage"
                                     type="radio"
                                     class="radio-button__input"
                                     name="code"
                                     value="html"
                                 />
-                                <label :for="idPrefix + '-lang-html'" class="radio-button__label"> HTML </label>
+                                <label :for="id('lang-html')" class="radio-button__label"> HTML </label>
                             </div>
                         </div>
                     </fieldset>
@@ -69,9 +69,7 @@
 import { type PropType, defineComponent } from "vue";
 import LiveVueCode from "./live-vue-code";
 import { type ExpandAnimation, expandAnimation } from "./expand-animation";
-import { getSourceCode } from "./utils";
-
-let idCounter = 1;
+import { generateId, getSourceCode } from "./utils";
 
 export default defineComponent({
     name: "LiveExample",
@@ -128,7 +126,7 @@ export default defineComponent({
         return {
             /** Language declared by parent element via `data-language`, if any */
             parentLanguage: "",
-            idPrefix: `live-example-${idCounter++}`,
+            idPrefix: generateId(this.template),
             /** Language selected by user to view sourcecode in */
             codeLanguage: "html",
             codeExpand: {
@@ -174,7 +172,8 @@ export default defineComponent({
     watch: {
         template: {
             immediate: false,
-            handler() {
+            handler(template) {
+                this.idPrefix = generateId(template);
                 this.updateSourceCode();
             },
         },
@@ -202,6 +201,9 @@ export default defineComponent({
         this.updateSourceCode();
     },
     methods: {
+        id(suffix: string): string {
+            return `${this.idPrefix}--${suffix}`;
+        },
         onToggleCode(): void {
             this.codeExpand.toggle();
         },
