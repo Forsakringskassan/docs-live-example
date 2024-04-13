@@ -22,6 +22,10 @@ export default defineComponent({
     },
     render() {
         const renderFunction = compile(this.template);
+        if (!renderFunction) {
+            const message = "Failed to compile Vue render function!";
+            return h("div", { style: "color: red" }, message);
+        }
         return h(
             {
                 name: "LiveComponent",
