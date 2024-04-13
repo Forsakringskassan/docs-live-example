@@ -1,12 +1,10 @@
 <template>
     <div class="live-example__container">
         <div ref="example" class="live-example__example">
-            <live-code
-                :components="components"
-                :template="template"
-                :livedata="livedata"
-                :livemethods="livemethods"
-            ></live-code>
+            <live-vue-code v-if="isVue" :components :template :livedata :livemethods></live-vue-code>
+            <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
+            <pre v-else-if="isHtml" v-html="template"></pre>
+            <pre v-else>Unknown language, cannot render example</pre>
         </div>
         <div class="live-example__controls">
             <slot></slot>
@@ -63,14 +61,14 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { highlight, stripComments } from "./utils";
-import LiveCode from "./LiveCode";
+import LiveVueCode from "./live-vue-code";
 import { type ExpandAnimation, expandAnimation } from "./expand-animation";
 
 let idCounter = 1;
 
 export default defineComponent({
     name: "LiveExample",
-    components: { LiveCode },
+    components: { LiveVueCode },
     props: {
         template: {
             type: String,
@@ -113,6 +111,9 @@ export default defineComponent({
     computed: {
         isVue(): boolean {
             return Object.keys(this.components).length > 0;
+        },
+        isHtml(): boolean {
+            return !this.isVue;
         },
         codeToggleText(): string {
             return this.codeExpand.isOpen ? "Dölj kod" : "Visa kod";

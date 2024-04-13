@@ -1,7 +1,7 @@
 import { defineComponent, compile, h } from "vue";
 
 export default defineComponent({
-    name: "LiveCode",
+    name: "LiveVueCode",
     props: {
         template: {
             type: String,
