@@ -1,9 +1,15 @@
 <template>
     <div class="live-example__container">
         <div ref="example" class="live-example__example">
-            <live-vue-code v-if="isVue" :components :template :livedata :livemethods></live-vue-code>
+            <live-vue-code
+                v-if="templateLanguage === 'vue'"
+                :components
+                :template
+                :livedata
+                :livemethods
+            ></live-vue-code>
             <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
-            <pre v-else-if="isHtml" v-html="template"></pre>
+            <pre v-else-if="templateLanguage === 'html'" v-html="template"></pre>
             <pre v-else>Unknown language, cannot render example</pre>
         </div>
         <div class="live-example__controls">
@@ -27,7 +33,7 @@
                     <fieldset class="fieldset radio-button-group radio-button-group--horizontal">
                         <legend class="label fieldset__label">Kodspråk</legend>
                         <div class="fieldset__content radio-button-group__content">
-                            <div v-if="isVue" class="radio-button">
+                            <div v-if="templateLanguage === 'vue'" class="radio-button">
                                 <input
                                     :id="idPrefix + '-lang-vue'"
                                     v-model="codeLanguage"
@@ -52,7 +58,8 @@
                         </div>
                     </fieldset>
                 </div>
-                <pre ref="template"></pre>
+                <!-- eslint-disable-next-line vue/no-v-html -- expected to show highlighted markup -->
+                <pre v-html="sourceCode"></pre>
             </div>
         </div>
     </div>
@@ -60,9 +67,9 @@
 
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
-import { highlight, stripComments } from "./utils";
 import LiveVueCode from "./live-vue-code";
 import { type ExpandAnimation, expandAnimation } from "./expand-animation";
+import { getSourceCode } from "./utils";
 
 let idCounter = 1;
 
@@ -119,8 +126,10 @@ export default defineComponent({
     },
     data() {
         return {
+            /** Language declared by parent element via `data-language`, if any */
             parentLanguage: "",
             idPrefix: `live-example-${idCounter++}`,
+            /** Language selected by user to view sourcecode in */
             codeLanguage: "html",
             codeExpand: {
                 isOpen: false,
@@ -128,10 +137,12 @@ export default defineComponent({
                     /* do nothing */
                 },
             } as ExpandAnimation,
+            /** Sourcecode to present to user */
+            sourceCode: "",
         };
     },
     computed: {
-        computedLanguage(): "vue" | "html" {
+        templateLanguage(): "vue" | "html" {
             /* explicit language set */
             if (this.language !== "auto") {
                 return this.language;
@@ -140,8 +151,8 @@ export default defineComponent({
             /* autodetect by explicit language attribute on parent */
             if (this.parentLanguage) {
                 /* we are lying slightly here, we are only supposed to use these
-                two languages but the code will still work even if not: we
-                should maybe declare it as "string" instead though */
+                 * two languages but the code will still work even if not: we
+                 * should maybe declare it as "string" instead though */
                 return this.parentLanguage as "html" | "vue";
             }
 
@@ -149,12 +160,6 @@ export default defineComponent({
              * passes child components) */
             const hasChildComponents = Object.keys(this.components).length > 0;
             return hasChildComponents ? "vue" : "html";
-        },
-        isVue(): boolean {
-            return Object.keys(this.components).length > 0;
-        },
-        isHtml(): boolean {
-            return !this.isVue;
         },
         codeToggleText(): string {
             return this.codeExpand.isOpen ? "Dölj kod" : "Visa kod";
@@ -165,60 +170,48 @@ export default defineComponent({
         expandableElement(): HTMLElement {
             return this.$refs.expandable as HTMLElement;
         },
-        templateElement(): HTMLElement {
-            return this.$refs.template as HTMLElement;
-        },
     },
     watch: {
         template: {
             immediate: false,
             handler() {
-                this.compileCode();
+                this.updateSourceCode();
             },
         },
         codeLanguage: {
             immediate: false,
             handler() {
-                this.compileCode();
+                this.updateSourceCode();
             },
         },
     },
     mounted() {
+        /* try to fetch template language from a parent element */
         const parent = this.$el.closest("[data-language]");
         if (parent) {
             this.parentLanguage = parent.dataset.language ?? "";
         }
-        if (this.isVue) {
+
+        /* prefer to display sourcecode as original vue code if the language is
+         * set to vue */
+        if (this.templateLanguage === "vue") {
             this.codeLanguage = "vue";
         }
 
         this.codeExpand = expandAnimation(this.expandableElement);
-        this.compileCode();
+        this.updateSourceCode();
     },
     methods: {
         onToggleCode(): void {
             this.codeExpand.toggle();
         },
-        compileCode(): void {
-            switch (this.codeLanguage) {
-                case "vue":
-                    this.compileVue();
-                    break;
-                case "html":
-                    this.compileHTML();
-                    break;
-            }
-        },
-        async compileVue(): Promise<void> {
-            const { templateElement } = this;
-            templateElement.innerHTML = await highlight(this.template);
-        },
-        async compileHTML(): Promise<void> {
+        async updateSourceCode(): Promise<void> {
             await this.$nextTick();
-            const { exampleElement, templateElement } = this;
-            const html = exampleElement.innerHTML;
-            const uncommented = stripComments(html);
-            templateElement.innerHTML = await highlight(uncommented);
+            this.sourceCode = await getSourceCode({
+                language: this.codeLanguage === "html" ? "html" : "original",
+                template: this.template,
+                element: this.exampleElement,
+            });
         },
     },
 });

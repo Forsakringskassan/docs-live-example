@@ -15,6 +15,9 @@ const prettierConfig: Options = {
     printWidth: 80,
 };
 
+/**
+ * @internal
+ */
 export async function highlight(code: string): Promise<string> {
     const formatted = await prettier.format(code, prettierConfig);
     const { value } = hljs.highlight(formatted, { language: "html" });
