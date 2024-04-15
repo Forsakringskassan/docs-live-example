@@ -1,7 +1,7 @@
 import { defineComponent, compile, h } from "vue";
 
 export default defineComponent({
-    name: "LiveCode",
+    name: "LiveVueCode",
     props: {
         template: {
             type: String,
@@ -22,6 +22,10 @@ export default defineComponent({
     },
     render() {
         const renderFunction = compile(this.template);
+        if (!renderFunction) {
+            const message = "Failed to compile Vue render function!";
+            return h("div", { style: "color: red" }, message);
+        }
         return h(
             {
                 name: "LiveComponent",
