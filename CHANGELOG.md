@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## [1.4.2](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.1...v1.4.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* add sass import option ([5ab79ed](https://github.com/Forsakringskassan/docs-live-example/commit/5ab79ed3c20e95874bdb79b10ccdc08346175f74))
+* hybrid esm/cjs package ([410c37c](https://github.com/Forsakringskassan/docs-live-example/commit/410c37ce7431101afb915d1265d64c169f0a1c82))
+* properly generate unique id for each example ([d455cb6](https://github.com/Forsakringskassan/docs-live-example/commit/d455cb63a9b5586bf5fda6bc834e7e1b417b1b86))
+* render html examples properly ([4fa011e](https://github.com/Forsakringskassan/docs-live-example/commit/4fa011ed77247c9c883913bc31aa91714c529928))
+* show error if vue template cannot be compiled ([1b5d7e4](https://github.com/Forsakringskassan/docs-live-example/commit/1b5d7e4f2d4fea41b3ab71438a1bac00b163a61a))
+* updated language detection ([1e148fe](https://github.com/Forsakringskassan/docs-live-example/commit/1e148feb3437f15caab6f4a001dc797d4a7b0744))
+
 ## [1.4.1](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.0...v1.4.1) (2024-04-12)
 
 
