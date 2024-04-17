@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.4.3](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.2...v1.4.3) (2024-04-17)
+
+
+### Bug Fixes
+
+* set types field for older typescript versions ([28a5ec2](https://github.com/Forsakringskassan/docs-live-example/commit/28a5ec26e18d3212d535330e390f9305b2bcf336))
+
 ## [1.4.2](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.1...v1.4.2) (2024-04-15)
 
 
