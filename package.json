@@ -101,7 +101,7 @@
     "@html-validate/release-scripts": "6.4.0",
     "@types/jest": "29.5.12",
     "@types/prettier": "2.7.3",
-    "esbuild": "0.21.1",
+    "esbuild": "0.21.2",
     "glob": "10.3.15",
     "html-validate": "8.18.2",
     "html-validate-vue": "6.0.7",
