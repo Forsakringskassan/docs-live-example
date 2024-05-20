@@ -8,7 +8,8 @@
   "homepage": "https://github.com/Forsakringskassan/docs-live-example",
   "bugs": "https://github.com/Forsakringskassan/docs-live-example/issues",
   "repository": {
-    "url": "https://github.com/Forsakringskassan/docs-live-example.git"
+    "type": "git",
+    "url": "git+https://github.com/Forsakringskassan/docs-live-example.git"
   },
   "license": "MIT",
   "author": "Försäkringskassan",
@@ -107,7 +108,7 @@
     "html-validate-vue": "6.0.7",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
-    "npm-pkg-lint": "2.4.1",
+    "npm-pkg-lint": "3.6.0",
     "npm-run-all2": "6.1.2",
     "rimraf": "5.0.7",
     "sass": "1.77.2",
