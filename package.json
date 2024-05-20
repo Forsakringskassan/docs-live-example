@@ -109,7 +109,7 @@
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "npm-pkg-lint": "3.6.0",
-    "npm-run-all2": "6.1.2",
+    "npm-run-all2": "6.2.0",
     "rimraf": "5.0.7",
     "sass": "1.77.2",
     "typescript": "5.4.5",
