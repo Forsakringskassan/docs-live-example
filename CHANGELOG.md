@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.4.4](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.3...v1.4.4) (2024-05-27)
+
+
+### Bug Fixes
+
+* add missing `createElement` export ([a7c16f7](https://github.com/Forsakringskassan/docs-live-example/commit/a7c16f7071709f12080241ed1fe750716a5d0e06))
+
 ## [1.4.3](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.2...v1.4.3) (2024-04-17)
 
 
