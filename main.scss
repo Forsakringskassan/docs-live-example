@@ -1,12 +1,10 @@
 @use "dist/esm/index.css";
 
-$LIVE_EXAMPLE_SELECTOR: ".live-example" !default;
-
 :root {
     --live-example-space: 1.5rem;
 }
 
-#{$LIVE_EXAMPLE_SELECTOR} {
+.live-example {
     &__container {
         border: var(--f-border-width-small) solid #ddddde;
         border-radius: 4px;
