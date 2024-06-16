@@ -2,6 +2,7 @@
 
 :root {
     --live-example-space: 1.5rem;
+    --live-example-controls-width: 17rem;
 }
 
 .live-example {
@@ -9,7 +10,7 @@
         border: var(--f-border-width-small) solid #ddddde;
         border-radius: 4px;
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr var(--live-example-controls-width);
         grid-template-areas:
             "example controls"
             "code code";
