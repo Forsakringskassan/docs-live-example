@@ -52,7 +52,7 @@ Vi rekommenderar att använda `LiveExample` som suffix på alla live-exempel.
 
 Följande boilerplate kan användas:
 
-```vue
+```vue static
 <template>
     <live-example :components :template :livedata>
         <!-- Example configuration -->
@@ -134,6 +134,61 @@ Det går också med fördel att använda `createElement` (se beskrivning längre
 +            const message = placeholderText ? "Lorem ipsum dolor sit amet" : "Hello World!" ;
 +            return createElement(tagName, message);
          },
+```
+
+Resultatet:
+
+```vue live-example
+<template>
+    <live-example :template>
+        <div>
+            <label for="config-element"> Element </label>
+            <select id="config-element" v-model="tagName">
+                <option value="div">div</option>
+                <option value="p">p</option>
+                <option value="em">em</option>
+            </select>
+        </div>
+        <div>
+            <label>
+                <input
+                    type="checkbox"
+                    v-model="placeholderText"
+                    :value="true"
+                />
+                Use placeholder text
+            </label>
+        </div>
+    </live-example>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import {
+    LiveExample,
+    createElement,
+} from "@forsakringskassan/docs-live-example";
+
+export default defineComponent({
+    name: "AwesomeComponentLiveExample",
+    components: { LiveExample },
+    data() {
+        return {
+            tagName: "div",
+            placeholderText: false,
+        };
+    },
+    computed: {
+        template(): string {
+            const { tagName, placeholderText } = this;
+            const message = placeholderText
+                ? "Lorem ipsum dolor sit amet"
+                : "Hello World!";
+            return createElement(tagName, message);
+        },
+    },
+});
+</script>
 ```
 
 ## `createElement`
