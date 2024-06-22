@@ -1,20 +1,32 @@
+@use "sass:math";
 @use "dist/esm/index.css";
 
-$LIVE_EXAMPLE_SELECTOR: ".live-example" !default;
+$controls-width: 17rem;
+$controls-ratio: 0.395; // how much of the total width before collapsing, 0.5 collapses when 20rem is 50% of the total width
+$controls-breakpoint: math.div($controls-width, $controls-ratio);
 
 :root {
     --live-example-space: 1.5rem;
+    --live-example-controls-width: #{$controls-width};
 }
 
-#{$LIVE_EXAMPLE_SELECTOR} {
+.code-preview {
+    container-type: inline-size;
+    container-name: example-container;
+}
+
+.live-example {
     &__container {
         border: var(--f-border-width-small) solid #ddddde;
         border-radius: 4px;
         display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-            "example controls"
-            "code code";
+        grid-template-columns: 1fr;
+        grid-template-areas: "example" "controls" "code";
+
+        @container example-container (width >= #{$controls-breakpoint}) {
+            grid-template-columns: 1fr var(--live-example-controls-width);
+            grid-template-areas: "example controls" "code code";
+        }
     }
 
     &__example {
