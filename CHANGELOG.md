@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [1.4.5](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.4...v1.4.5) (2024-06-22)
+
+
+### Bug Fixes
+
+* controls panel stack when the container width is to small ([37aa005](https://github.com/Forsakringskassan/docs-live-example/commit/37aa00508ffc118ad4b9f40b243e9da3ce5d8f31))
+* limit controls panel width to 17rem ([a316bc2](https://github.com/Forsakringskassan/docs-live-example/commit/a316bc28419575c2ce92ff11aecff07ec459b55b))
+
 ## [1.4.4](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.3...v1.4.4) (2024-05-27)
 
 
