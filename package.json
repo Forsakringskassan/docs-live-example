@@ -112,7 +112,7 @@
     "npm-run-all2": "6.2.0",
     "rimraf": "5.0.7",
     "sass": "1.77.6",
-    "typescript": "5.4.5",
+    "typescript": "5.5.2",
     "vue": "3.4.29",
     "vue-tsc": "2.0.21"
   },
