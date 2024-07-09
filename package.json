@@ -103,7 +103,7 @@
     "@types/jest": "29.5.12",
     "@types/prettier": "2.7.3",
     "esbuild": "0.23.0",
-    "glob": "10.4.2",
+    "glob": "10.4.3",
     "html-validate": "8.20.1",
     "html-validate-vue": "6.0.7",
     "husky": "9.0.11",
