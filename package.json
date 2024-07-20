@@ -104,7 +104,7 @@
     "@types/prettier": "2.7.3",
     "esbuild": "0.23.0",
     "glob": "10.4.5",
-    "html-validate": "8.20.1",
+    "html-validate": "8.21.0",
     "html-validate-vue": "6.0.7",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
