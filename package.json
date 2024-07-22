@@ -108,7 +108,7 @@
     "html-validate-vue": "6.0.8",
     "husky": "9.1.1",
     "lint-staged": "15.2.7",
-    "npm-pkg-lint": "3.6.4",
+    "npm-pkg-lint": "3.6.5",
     "npm-run-all2": "6.2.2",
     "rimraf": "5.0.9",
     "sass": "1.77.8",
