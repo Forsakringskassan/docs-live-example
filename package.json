@@ -106,7 +106,7 @@
     "glob": "10.4.5",
     "html-validate": "8.21.0",
     "html-validate-vue": "6.0.8",
-    "husky": "9.1.1",
+    "husky": "9.1.2",
     "lint-staged": "15.2.7",
     "npm-pkg-lint": "3.6.5",
     "npm-run-all2": "6.2.2",
