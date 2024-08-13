@@ -2,7 +2,12 @@
     <div class="live-example__container">
         <div ref="example" class="live-example__example">
             <div v-if="templateLanguage === 'vue'">
-                <live-vue-code :components :template :livedata :livemethods></live-vue-code>
+                <div v-if="componentScript">
+                    <dynamic-component :component-script="componentScript" :template></dynamic-component>
+                </div>
+                <div v-else>
+                    <live-vue-code :components :template :livedata :livemethods></live-vue-code>
+                </div>
             </div>
             <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
             <div v-else-if="templateLanguage === 'html'" v-html="template"></div>
@@ -12,7 +17,11 @@
             <slot></slot>
         </div>
         <div v-if="exampleElement" class="live-example__code">
-            <live-example-sourcecode :element="exampleElement" :template :template-language></live-example-sourcecode>
+            <live-example-sourcecode
+                :element="exampleElement"
+                :template="fullTemplate"
+                :template-language
+            ></live-example-sourcecode>
         </div>
     </div>
 </template>
@@ -21,10 +30,11 @@
 import { type PropType, defineComponent } from "vue";
 import LiveExampleSourcecode from "./LiveExampleSourcecode.vue";
 import LiveVueCode from "./live-vue-code";
+import DynamicComponent from "./DynamicComponent";
 
 export default defineComponent({
     name: "LiveExample",
-    components: { LiveExampleSourcecode, LiveVueCode },
+    components: { LiveExampleSourcecode, LiveVueCode, DynamicComponent },
     props: {
         /**
          * Explicitly render example in given language.
@@ -72,6 +82,16 @@ export default defineComponent({
                 return {};
             },
         },
+        componentScript: {
+            type: Object,
+            required: false,
+            default: undefined,
+        },
+        componentCode: {
+            type: String,
+            required: false,
+            default: "",
+        },
     },
     data() {
         return {
@@ -99,6 +119,14 @@ export default defineComponent({
              * passes child components) */
             const hasChildComponents = Object.keys(this.components).length > 0;
             return hasChildComponents ? "vue" : "html";
+        },
+        fullTemplate(): string {
+            if (this.componentCode) {
+                const componentCode = this.componentCode.replace(/<template>[\s\S]*<\/template>/, "");
+                return `<template>${this.template}</template>\n\n${componentCode}`;
+            } else {
+                return this.template;
+            }
         },
     },
     mounted() {
