@@ -19,6 +19,9 @@ const prettierConfig: Options = {
  * @internal
  */
 export async function highlight(code: string): Promise<string> {
+    /* eslint-disable-next-line import/no-named-as-default-member -- technical
+     * debt, without actually checking this is probably needed for compatibility
+     * with prettier 2 */
     const formatted = await prettier.format(code, prettierConfig);
     const { value } = hljs.highlight(formatted, { language: "html" });
     return `<code class="hljs lang-html" tabindex="0">${value}</code>`;
