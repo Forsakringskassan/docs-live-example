@@ -99,7 +99,7 @@
     "@forsakringskassan/eslint-config-vue": "11.4.1",
     "@forsakringskassan/jest-config": "29.5.10",
     "@forsakringskassan/prettier-config": "2.1.1",
-    "@html-validate/release-scripts": "6.5.3",
+    "@html-validate/release-scripts": "6.6.0",
     "@types/jest": "29.5.12",
     "@types/prettier": "2.7.3",
     "esbuild": "0.23.1",
