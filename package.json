@@ -105,7 +105,7 @@
     "esbuild": "0.23.1",
     "html-validate": "8.22.0",
     "html-validate-vue": "6.0.8",
-    "husky": "9.1.5",
+    "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "npm-pkg-lint": "3.7.1",
     "npm-run-all2": "6.2.2",
