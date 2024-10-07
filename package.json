@@ -36,7 +36,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "rimraf dist",
-    "build": "vue-tsc -b && node build.js",
+    "build": "vue-tsc && node build.js",
     "html-validate": "html-validate --ext vue,html src",
     "prepack": "release-prepack --bundle",
     "postpack": "release-postpack package.json",
@@ -100,7 +100,9 @@
     "@forsakringskassan/jest-config": "29.6.0",
     "@forsakringskassan/prettier-config": "2.1.1",
     "@html-validate/release-scripts": "6.7.0",
+    "@tsconfig/node20": "20.1.4",
     "@types/jest": "29.5.13",
+    "@types/node": "20.16.10",
     "@types/prettier": "2.7.3",
     "esbuild": "0.24.0",
     "html-validate": "8.23.0",
@@ -126,6 +128,6 @@
     }
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 20"
   }
 }
