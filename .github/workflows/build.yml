@@ -7,7 +7,6 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                # note: keep in sync with if-statement on npm-pkg-lint below
                 node-version: [16.x, 18.x, 20.x, 21.x]
         steps:
             - uses: actions/checkout@v4
@@ -16,23 +15,11 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install dependencies
-              run: |
-                  npm ci
-            - name: Prettier
-              run: npm run prettier:check
-            - name: ESLint
-              run: npm run eslint
-            - name: HTML-Validate
-              run: npm run html-validate
+              run: npm ci
             - name: Jest
               run: node --experimental-vm-modules node_modules/jest/bin/jest.js
             - name: Build
               run: npm run --if-present build
-            - name: npm-pkg-lint
-              if: matrix.node-version == '20.x'
-              run: |
-                  npm pack
-                  npm exec npm-pkg-lint
 
     prettier:
         runs-on: ubuntu-latest
