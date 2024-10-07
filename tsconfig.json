@@ -1,23 +1,17 @@
 {
+    "extends": "@tsconfig/node20/tsconfig.json",
     "compilerOptions": {
         "rootDir": "./src",
         "outDir": "./dist",
         "emitDeclarationOnly": true,
-        "target": "es2022",
-        "lib": ["es2022", "dom", "dom.iterable"],
+        "sourceMap": true,
+        "lib": ["es2023", "dom", "dom.iterable"],
         "module": "esnext",
-        "alwaysStrict": true,
         "declaration": true,
         "declarationDir": "./dist",
         "strict": true,
-        "jsx": "preserve",
-        "noImplicitAny": true,
         "moduleResolution": "node",
-        "isolatedModules": false,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "resolveJsonModule": true,
-        "sourceMap": true
+        "isolatedModules": true
     },
-    "include": ["./src/**/*.ts"]
+    "include": ["./src/**/*.ts", "./src/**/*.vue"]
 }
