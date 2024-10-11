@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.5.0](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.6...v1.5.0) (2024-10-11)
+
+
+### Features
+
+* **deps:** require nodejs 20 or later ([7a001bf](https://github.com/Forsakringskassan/docs-live-example/commit/7a001bf61a60203fc9e2359f6f961b1116372dbf))
+
 ## [1.4.6](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.5...v1.4.6) (2024-07-12)
 
 
