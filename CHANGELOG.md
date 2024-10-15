@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.5.1](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.0...v1.5.1) (2024-10-15)
+
+
+### Bug Fixes
+
+* prevent example content for overflowing ([d5eccd7](https://github.com/Forsakringskassan/docs-live-example/commit/d5eccd7b81518552d9a9f7ca41ff196885798680))
+
 ## [1.5.0](https://github.com/Forsakringskassan/docs-live-example/compare/v1.4.6...v1.5.0) (2024-10-11)
 
 
