@@ -2,17 +2,30 @@
     <div class="live-example__container">
         <div ref="example" class="live-example__example">
             <div v-if="templateLanguage === 'vue'">
-                <live-vue-code :components :template :livedata :livemethods></live-vue-code>
+                <dynamic-component
+                    v-if="examples"
+                    :component="currentExample.component"
+                    :template-markdown="template"
+                ></dynamic-component>
+                <live-vue-code v-else :components :template :livedata :livemethods></live-vue-code>
             </div>
             <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
             <div v-else-if="templateLanguage === 'html'" v-html="template"></div>
             <div v-else><pre>Unknown language, cannot render example</pre></div>
         </div>
+
         <div class="live-example__controls">
             <slot></slot>
         </div>
+
         <div v-if="exampleElement" class="live-example__code">
-            <live-example-sourcecode :element="exampleElement" :template :template-language></live-example-sourcecode>
+            <live-example-sourcecode
+                :element="exampleElement"
+                :template="fullTemplate"
+                :template-language
+                :examples
+                @change="onVariantChange"
+            ></live-example-sourcecode>
         </div>
     </div>
 </template>
@@ -21,10 +34,18 @@
 import { type PropType, defineComponent } from "vue";
 import LiveExampleSourcecode from "./LiveExampleSourcecode.vue";
 import LiveVueCode from "./live-vue-code";
+import DynamicComponent from "./DynamicComponent";
+
+export interface LiveExampleVariant {
+    displayName: string;
+    component: object;
+    scriptMarkdown: string;
+    language: "vue" | "html";
+}
 
 export default defineComponent({
     name: "LiveExample",
-    components: { LiveExampleSourcecode, LiveVueCode },
+    components: { LiveExampleSourcecode, LiveVueCode, DynamicComponent },
     props: {
         /**
          * Explicitly render example in given language.
@@ -72,12 +93,20 @@ export default defineComponent({
                 return {};
             },
         },
+        examples: {
+            type: Array<LiveExampleVariant>,
+            requred: false,
+            default: () => {
+                return undefined;
+            },
+        },
     },
     data() {
         return {
             /** Language declared by parent element via `data-language`, if any */
             parentLanguage: "",
             exampleElement: undefined as HTMLElement | undefined,
+            currentExample: {} as LiveExampleVariant,
         };
     },
     computed: {
@@ -100,8 +129,19 @@ export default defineComponent({
             const hasChildComponents = Object.keys(this.components).length > 0;
             return hasChildComponents ? "vue" : "html";
         },
+        fullTemplate(): string {
+            if (this.currentExample.scriptMarkdown) {
+                const scriptMarkdown = this.currentExample.scriptMarkdown.replace(/<template>[\s\S]*<\/template>/, "");
+                return `<template>${this.template}</template>\n\n${scriptMarkdown}`;
+            } else {
+                return this.template;
+            }
+        },
     },
     mounted() {
+        if (this.examples && this.examples.length > 0) {
+            this.currentExample = this.examples[0];
+        }
         /* try to fetch template language from a parent element */
         const parent = this.$el.closest("[data-language]");
         if (parent) {
@@ -109,6 +149,11 @@ export default defineComponent({
         }
 
         this.exampleElement = this.$refs.example as HTMLElement;
+    },
+    methods: {
+        onVariantChange(example: LiveExampleVariant) {
+            this.currentExample = example;
+        },
     },
 });
 </script>

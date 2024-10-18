@@ -2,6 +2,7 @@
 import { type PropType, ref, computed, onMounted, watch, nextTick } from "vue";
 import { type ExpandAnimation, expandAnimation } from "./expand-animation";
 import { generateId, getSourceCode } from "./utils";
+import { LiveExampleVariant } from "./LiveExample.vue";
 
 const props = defineProps({
     element: {
@@ -16,9 +17,19 @@ const props = defineProps({
         type: String as PropType<"vue" | "html">,
         required: true,
     },
+    examples: {
+        type: Array<LiveExampleVariant>,
+        requred: false,
+        default: () => {
+            return undefined;
+        },
+    },
 });
 
+const emit = defineEmits(["change"]);
+
 let idPrefix = generateId(props.template);
+const selectedExample = ref<LiveExampleVariant>();
 const sourcecode = ref("");
 const expandable = ref<HTMLElement | null>(null);
 const animation = ref<ExpandAnimation>({
@@ -34,6 +45,9 @@ const codeToggleText = computed(() => {
 });
 
 onMounted(() => {
+    if (props.examples) {
+        selectedExample.value = props.examples[0];
+    }
     if (expandable.value) {
         animation.value = expandAnimation(expandable.value);
     } else {
@@ -52,6 +66,11 @@ async function updateSourcecode(): Promise<void> {
         template: props.template ?? "",
         element: unwrapElement(props.element),
     });
+}
+
+async function onVariantChange(): Promise<void> {
+    emit("change", selectedExample.value);
+    await updateSourcecode();
 }
 
 /**
@@ -99,6 +118,7 @@ function onToggleCode(): void {
     </div>
     <div :id="id('code-expand')" ref="expandable" class="collapsed">
         <!-- [html-validate-disable-next wcag/h32 -- this form is not meant to be submitted] -->
+
         <form class="live-example__code-languages" onsubmit="event.preventDefault()">
             <fieldset v-if="sourcecode" class="fieldset radio-button-group radio-button-group--horizontal">
                 <legend class="label fieldset__label">Kodspråk</legend>
@@ -129,6 +149,21 @@ function onToggleCode(): void {
                     </div>
                 </div>
             </fieldset>
+            <div v-if="props.examples" class="select-field">
+                <label class="label" :for="id('lang-dropplista')"> Variant </label>
+                <div class="select-field__icon-wrapper">
+                    <select
+                        :id="id('lang-dropplista')"
+                        v-model="selectedExample"
+                        class="select-field__select"
+                        @change="onVariantChange"
+                    >
+                        <option v-for="example in props.examples" :key="example.displayName" :value="example">
+                            {{ example.displayName }}
+                        </option>
+                    </select>
+                </div>
+            </div>
         </form>
         <!-- eslint-disable-next-line vue/no-v-html -- expected to show highlighted markup -->
         <pre v-html="sourcecode"></pre>

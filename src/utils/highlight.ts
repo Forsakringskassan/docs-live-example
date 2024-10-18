@@ -1,10 +1,11 @@
 import { type Options } from "prettier";
 import prettier from "prettier/standalone";
 import htmlPlugin from "prettier/parser-html";
-import hljs from "highlight.js/lib/core";
-import html from "highlight.js/lib/languages/xml";
+import hljs from "highlightjs";
+import hljsDefineVue from "highlightjs-vue";
 
-hljs.registerLanguage("html", html);
+hljsDefineVue(hljs);
+hljs.initHighlightingOnLoad();
 
 const prettierConfig: Options = {
     parser: "html",
@@ -23,6 +24,6 @@ export async function highlight(code: string): Promise<string> {
      * debt, without actually checking this is probably needed for compatibility
      * with prettier 2 */
     const formatted = await prettier.format(code, prettierConfig);
-    const { value } = hljs.highlight(formatted, { language: "html" });
+    const { value } = hljs.highlight("vue", formatted);
     return `<code class="hljs lang-html" tabindex="0">${value}</code>`;
 }
