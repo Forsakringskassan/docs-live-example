@@ -4,9 +4,9 @@
 
 Komponenten består av tre ytor:
 
--   exempelyta: innehåller det kompilerade exemplet.
--   kontrollyta: innehåller de inmatningsfält som används för att konfigurera exemplet.
--   kodyta: visar HTML-markup och Vue-template för exemplet (om Vue-komponenter används).
+- exempelyta: innehåller det kompilerade exemplet.
+- kontrollyta: innehåller de inmatningsfält som används för att konfigurera exemplet.
+- kodyta: visar HTML-markup och Vue-template för exemplet (om Vue-komponenter används).
 
 Eftersom `live-example` kompileras i runtime så kan man direkt modifiera exemplet och den markup som visas genom att använda de inmatningsfält som lagts till i kontrollytan.
 
@@ -218,12 +218,12 @@ createElement("div", { id: "my-awesome-id", class: ["foo", "bar"] });
 
 Attributes can be:
 
--   `string` - value is passed as-is: `{ key: "value" }` becomes `key="value"`.
--   `number` - value is converted to string: `{ key: 12 }` becomes `key="12"`.
--   `boolean` - key is set if value is true: `{ key: true }` becomes `key` and `{ key: false }` omits the attribute.
--   `Array` - each non-empty item is joined: `{ key: ["foo", "bar"] }` becomes `key="foo bar"`.
--   `Object` - nests attributes: `{ data: { key: "value" } }` becomes `data-key="value"`.
--   `null` and `undefined` are omitted from its context, e.g. `{ key: null }` `{ key: [null] ` and `{ key: { value: null } }` are all omitted.
+- `string` - value is passed as-is: `{ key: "value" }` becomes `key="value"`.
+- `number` - value is converted to string: `{ key: 12 }` becomes `key="12"`.
+- `boolean` - key is set if value is true: `{ key: true }` becomes `key` and `{ key: false }` omits the attribute.
+- `Array` - each non-empty item is joined: `{ key: ["foo", "bar"] }` becomes `key="foo bar"`.
+- `Object` - nests attributes: `{ data: { key: "value" } }` becomes `data-key="value"`.
+- `null` and `undefined` are omitted from its context, e.g. `{ key: null }` `{ key: [null] ` and `{ key: { value: null } }` are all omitted.
 
 Content can be added:
 
