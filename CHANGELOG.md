@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.5.4](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.3...v1.5.4) (2024-12-21)
+
+### Bug Fixes
+
+* support html-validate v9 ([777b023](https://github.com/Forsakringskassan/docs-live-example/commit/777b023c1476a0f947ce8d95208d303df31efc12))
+
 ## [1.5.3](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.2...v1.5.3) (2024-12-20)
 
 ### Bug Fixes
