@@ -1,9 +1,9 @@
 {
-    "plugins": ["html-validate-vue", "./htmlvalidate"],
+    "plugins": ["html-validate-vue", "./htmlvalidate/index.js"],
     "extends": [
-        "htmlvalidate:recommended",
+        "html-validate:recommended",
         "html-validate-vue:recommended",
-        "./htmlvalidate:recommended"
+        "@forsakringskassan/docs-live-example:recommended"
     ],
     "elements": ["html5"],
     "transform": {
