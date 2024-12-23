@@ -104,7 +104,7 @@
     "@types/jest": "29.5.14",
     "@types/node": "20.17.10",
     "@types/prettier": "2.7.3",
-    "esbuild": "0.24.1",
+    "esbuild": "0.24.2",
     "html-validate": "9.0.1",
     "html-validate-vue": "7.1.2",
     "husky": "9.1.7",
