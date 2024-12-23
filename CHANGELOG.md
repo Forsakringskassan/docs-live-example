@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [1.5.5](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.4...v1.5.5) (2024-12-23)
+
+### Bug Fixes
+
+* **deps:** update dependency html-validate to v9 ([b21cec4](https://github.com/Forsakringskassan/docs-live-example/commit/b21cec4b14c1ad39e69c36104ece3fdc56aafbc5))
+
 ## [1.5.4](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.3...v1.5.4) (2024-12-21)
 
 ### Bug Fixes
