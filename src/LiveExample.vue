@@ -1,22 +1,3 @@
-<template>
-    <div class="live-example__container">
-        <div ref="example" class="live-example__example">
-            <div v-if="templateLanguage === 'vue'">
-                <live-vue-code :components :template :livedata :livemethods></live-vue-code>
-            </div>
-            <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
-            <div v-else-if="templateLanguage === 'html'" v-html="template"></div>
-            <div v-else><pre>Unknown language, cannot render example</pre></div>
-        </div>
-        <div class="live-example__controls">
-            <slot></slot>
-        </div>
-        <div v-if="exampleElement" class="live-example__code">
-            <live-example-sourcecode :element="exampleElement" :template :template-language></live-example-sourcecode>
-        </div>
-    </div>
-</template>
-
 <script lang="ts">
 import { type PropType, defineComponent } from "vue";
 import LiveExampleSourcecode from "./LiveExampleSourcecode.vue";
@@ -112,3 +93,22 @@ export default defineComponent({
     },
 });
 </script>
+
+<template>
+    <div class="live-example__container">
+        <div ref="example" class="live-example__example">
+            <div v-if="templateLanguage === 'vue'">
+                <live-vue-code :components :template :livedata :livemethods></live-vue-code>
+            </div>
+            <!-- eslint-disable-next-line vue/no-v-html -- expected to show rendered html -->
+            <div v-else-if="templateLanguage === 'html'" v-html="template"></div>
+            <div v-else><pre>Unknown language, cannot render example</pre></div>
+        </div>
+        <div class="live-example__controls">
+            <slot></slot>
+        </div>
+        <div v-if="exampleElement" class="live-example__code">
+            <live-example-sourcecode :element="exampleElement" :template :template-language></live-example-sourcecode>
+        </div>
+    </div>
+</template>
