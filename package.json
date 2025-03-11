@@ -102,7 +102,7 @@
     "@html-validate/release-scripts": "6.8.0",
     "@tsconfig/node20": "20.1.4",
     "@types/jest": "29.5.14",
-    "@types/node": "20.17.24",
+    "@types/node": "22.13.10",
     "@types/prettier": "2.7.3",
     "esbuild": "0.25.0",
     "html-validate": "9.5.0",
