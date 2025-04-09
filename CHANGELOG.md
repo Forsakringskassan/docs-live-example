@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [2.0.0](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.6...v2.0.0) (2025-04-09)
+
+### ⚠ BREAKING CHANGES
+
+* require prettier v3
+
+### Features
+
+* require prettier v3 ([a0b1bf5](https://github.com/Forsakringskassan/docs-live-example/commit/a0b1bf5a084844ea31f857d4d480590617e28ef1))
+
 ## [1.5.6](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.5...v1.5.6) (2025-01-03)
 
 ### Bug Fixes
