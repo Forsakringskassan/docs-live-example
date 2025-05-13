@@ -111,7 +111,7 @@
     "npm-pkg-lint": "3.10.11",
     "npm-run-all2": "8.0.1",
     "rimraf": "6.0.1",
-    "sass": "1.87.0",
+    "sass": "1.88.0",
     "typescript": "5.8.3",
     "vue": "3.5.13",
     "vue-tsc": "2.2.10"
