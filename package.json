@@ -98,7 +98,7 @@
     "@types/node": "20.17.50",
     "esbuild": "0.25.4",
     "html-validate": "9.5.4",
-    "html-validate-vue": "7.1.6",
+    "html-validate-vue": "7.2.0",
     "husky": "9.1.7",
     "npm-pkg-lint": "3.10.12",
     "npm-run-all2": "8.0.3",
