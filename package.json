@@ -91,7 +91,7 @@
     "@forsakringskassan/eslint-config-typescript": "11.9.11",
     "@forsakringskassan/eslint-config-vue": "11.9.11",
     "@forsakringskassan/jest-config": "29.6.3",
-    "@forsakringskassan/prettier-config": "3.1.0",
+    "@forsakringskassan/prettier-config": "3.1.1",
     "@html-validate/release-scripts": "6.9.0",
     "@tsconfig/node20": "20.1.6",
     "@types/jest": "29.5.14",
