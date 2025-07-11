@@ -1,3 +1,5 @@
+import { toKebabCase } from "./utils";
+
 export type PlainValue = string | number | boolean | null | undefined;
 
 export interface Attributes {
@@ -89,7 +91,9 @@ function serializeAttribute(
 
 function serializeAttributes(attrs: Attributes): string {
     const entries = Object.entries(attrs);
-    const kv = entries.map(([key, value]) => serializeAttribute(key, value));
+    const kv = entries.map(([key, value]) =>
+        serializeAttribute(toKebabCase(key), value),
+    );
     const flat = kv.flat();
     if (flat.length > 0) {
         return ` ${kv.flat().join(" ")}`;

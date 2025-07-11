@@ -138,3 +138,15 @@ it("should serialize element with both attributes and multiple elements", () => 
         `"<div class="foo"> <h1> lorem </h1> <p> ipsum </p> dolor sit amet </div>"`,
     );
 });
+
+it("should serialize element with attribute as kebab-case", () => {
+    expect.assertions(1);
+    const markup = createElement(
+        "div",
+        { myCustomOption: "fooBARbaz" },
+        "lorem ipsum",
+    );
+    expect(markup).toMatchInlineSnapshot(
+        `"<div my-custom-option="fooBARbaz"> lorem ipsum </div>"`,
+    );
+});
