@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.1.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.0.0...v2.1.0) (2025-08-08)
+
+### Features
+
+* convert attributes to kebab-case in createElement() ([d4caee6](https://github.com/Forsakringskassan/docs-live-example/commit/d4caee6710dfd9732db5f923a1053561ff16e71d))
+
 ## [2.0.0](https://github.com/Forsakringskassan/docs-live-example/compare/v1.5.6...v2.0.0) (2025-04-09)
 
 ### ⚠ BREAKING CHANGES
