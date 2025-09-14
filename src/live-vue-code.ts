@@ -22,6 +22,7 @@ export default defineComponent({
     },
     render() {
         const renderFunction = compile(this.template);
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         if (!renderFunction) {
             const message = "Failed to compile Vue render function!";
             return h("div", { style: "color: red" }, message);

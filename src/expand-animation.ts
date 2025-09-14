@@ -33,6 +33,7 @@ export function expandAnimation(element: HTMLElement): ExpandAnimation {
                 if (isExpanding || isOpen) {
                     isOpen = false;
                     shrink();
+                    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
                 } else if (isClosing || !isOpen) {
                     isOpen = true;
                     open();
@@ -53,7 +54,7 @@ export function expandAnimation(element: HTMLElement): ExpandAnimation {
     function shrink(): void {
         isClosing = true;
 
-        const startHeight = `${element.offsetHeight}px`;
+        const startHeight = `${String(element.offsetHeight)}px`;
         const endHeight = `0px`;
 
         element.classList.add(ClassNames.COLLAPSING);
@@ -88,7 +89,9 @@ export function expandAnimation(element: HTMLElement): ExpandAnimation {
             currentHeight = element.getBoundingClientRect().height;
         }
         element.setAttribute("aria-expanded", "true");
-        window.requestAnimationFrame(() => expand(currentHeight));
+        window.requestAnimationFrame(() => {
+            expand(currentHeight);
+        });
     }
 
     function expand(currentHeight: number): void {
@@ -99,8 +102,8 @@ export function expandAnimation(element: HTMLElement): ExpandAnimation {
             element.style.height = "";
         }
 
-        const startHeight = `${currentHeight}px`;
-        const endHeight = `${element.offsetHeight}px`;
+        const startHeight = `${String(currentHeight)}px`;
+        const endHeight = `${String(element.offsetHeight)}px`;
 
         element.classList.add(ClassNames.EXPANDING);
 
