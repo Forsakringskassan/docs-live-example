@@ -76,7 +76,7 @@ function serializeAttribute(
         return [];
     }
     if (typeof value === "string" || typeof value === "number") {
-        return `${prefix}${key}="${value}"`;
+        return `${prefix}${key}="${String(value)}"`;
     }
     if (typeof value === "boolean") {
         return value ? `${prefix}${key}` : [];
