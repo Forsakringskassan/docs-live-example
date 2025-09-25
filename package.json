@@ -105,7 +105,7 @@
     "sass": "1.93.0",
     "typescript": "5.9.2",
     "vue": "3.5.21",
-    "vue-tsc": "3.0.7"
+    "vue-tsc": "3.0.8"
   },
   "peerDependencies": {
     "html-validate": ">= 7.9.0",
