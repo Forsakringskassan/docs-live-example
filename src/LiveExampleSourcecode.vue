@@ -1,26 +1,17 @@
 <script setup lang="ts">
-import { type PropType, ref, computed, onMounted, watch, nextTick } from "vue";
+import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from "vue";
 import { type ExpandAnimation, expandAnimation } from "./expand-animation";
 import { generateId, getSourceCode } from "./utils";
 
-const props = defineProps({
-    element: {
-        type: HTMLElement,
-        required: true,
-    },
-    template: {
-        type: String,
-        required: true,
-    },
-    templateLanguage: {
-        type: String as PropType<"vue" | "html">,
-        required: true,
-    },
-});
+const props = defineProps<{
+    element: HTMLElement;
+    template: string;
+    templateLanguage: "vue" | "html";
+}>();
 
 let idPrefix = generateId(props.template);
 const sourcecode = ref("");
-const expandable = ref<HTMLElement | null>(null);
+const expandable = useTemplateRef("expandableRef");
 const animation = ref<ExpandAnimation>({
     isOpen: false,
     toggle() {
@@ -97,7 +88,7 @@ function onToggleCode(): void {
             {{ codeToggleText }}
         </button>
     </div>
-    <div :id="id('code-expand')" ref="expandable" class="collapsed">
+    <div :id="id('code-expand')" ref="expandableRef" class="collapsed">
         <!-- [html-validate-disable-next wcag/h32 -- this form is not meant to be submitted] -->
         <form class="live-example__code-languages" onsubmit="event.preventDefault()">
             <fieldset v-if="sourcecode" class="fieldset radio-button-group radio-button-group--horizontal">

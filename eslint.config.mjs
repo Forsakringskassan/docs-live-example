@@ -1,8 +1,8 @@
 import defaultConfig, { defineConfig } from "@forsakringskassan/eslint-config";
 import cliConfig from "@forsakringskassan/eslint-config-cli";
+import jestConfig from "@forsakringskassan/eslint-config-jest";
 import typescriptConfig from "@forsakringskassan/eslint-config-typescript";
 import typeinfoConfig from "@forsakringskassan/eslint-config-typescript-typeinfo";
-import jestConfig from "@forsakringskassan/eslint-config-jest";
 import vueConfig from "@forsakringskassan/eslint-config-vue";
 
 export default [
@@ -35,4 +35,11 @@ export default [
             "import/no-named-as-default-member": "off",
         },
     }),
+
+    {
+        name: "local",
+        rules: {
+            "vue/no-restricted-block": "off",
+        },
+    },
 ];
