@@ -1,4 +1,4 @@
-import { defineComponent, compile, h } from "vue";
+import { compile, defineComponent, h } from "vue";
 
 export default defineComponent({
     name: "LiveVueCode",

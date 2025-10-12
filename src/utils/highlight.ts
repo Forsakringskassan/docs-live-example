@@ -1,8 +1,8 @@
-import { type Options } from "prettier";
-import { format } from "prettier/standalone";
-import htmlPlugin from "prettier/plugins/html";
 import hljs from "highlight.js/lib/core";
 import html from "highlight.js/lib/languages/xml";
+import { type Options } from "prettier";
+import htmlPlugin from "prettier/plugins/html";
+import { format } from "prettier/standalone";
 
 hljs.registerLanguage("html", html);
 
