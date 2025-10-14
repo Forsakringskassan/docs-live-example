@@ -95,7 +95,7 @@
     "@html-validate/release-scripts": "6.10.0",
     "@tsconfig/node20": "20.1.6",
     "@types/jest": "30.0.0",
-    "@types/node": "20.19.20",
+    "@types/node": "20.19.21",
     "esbuild": "0.25.10",
     "html-validate": "10.1.2",
     "html-validate-vue": "7.3.1",
