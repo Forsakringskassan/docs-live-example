@@ -79,7 +79,7 @@
     }
   },
   "dependencies": {
-    "esbuild-plugin-vue3": "0.5.0",
+    "esbuild-plugin-vue3": "0.5.1",
     "highlight.js": "11.11.1"
   },
   "devDependencies": {
