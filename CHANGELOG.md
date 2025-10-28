@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [2.2.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.1.0...v2.2.0) (2025-10-28)
+
+### Features
+
+* support dark mode ([dc2a1bc](https://github.com/Forsakringskassan/docs-live-example/commit/dc2a1bcc79d93303dde2be581cb27afea87c359f))
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild-plugin-vue3 to v0.5.0 ([8260607](https://github.com/Forsakringskassan/docs-live-example/commit/82606074c6440daf529071baf929428a7ba44c47))
+* **deps:** update dependency esbuild-plugin-vue3 to v0.5.1 ([355500f](https://github.com/Forsakringskassan/docs-live-example/commit/355500f37e52d083983f8fc14807f97ed90a8d33))
+
 ## [2.1.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.0.0...v2.1.0) (2025-08-08)
 
 ### Features
