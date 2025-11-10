@@ -96,7 +96,7 @@ export default defineComponent({
 
 <template>
     <div class="live-example__container">
-        <div ref="example" class="live-example__example">
+        <div ref="example" class="live-example__example user-background">
             <div v-if="templateLanguage === 'vue'">
                 <live-vue-code :components :template :livedata :livemethods></live-vue-code>
             </div>
