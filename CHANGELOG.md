@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.3.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.2.0...v2.3.0) (2025-12-05)
+
+### Features
+
+* use checkerboard styling directly from @forsakringskassan/docs-generator ([7cda947](https://github.com/Forsakringskassan/docs-live-example/commit/7cda947c98f8b8fe6835c0e90ee5cc83a7b81f06))
+
 ## [2.2.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.1.0...v2.2.0) (2025-10-28)
 
 ### Features
