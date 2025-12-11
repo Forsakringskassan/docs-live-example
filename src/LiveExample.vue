@@ -53,6 +53,10 @@ export default defineComponent({
                 return {};
             },
         },
+        forceSingleColumn: {
+            type: Boolean,
+            required: false,
+        },
     },
     data() {
         return {
@@ -62,6 +66,13 @@ export default defineComponent({
         };
     },
     computed: {
+        containerClasses(): string[] {
+            const classes = ["live-example__container"];
+            if (this.forceSingleColumn) {
+                classes.push("live-example__container--single-column");
+            }
+            return classes;
+        },
         templateLanguage(): "vue" | "html" {
             /* explicit language set */
             if (this.language !== "auto") {
@@ -95,7 +106,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="live-example__container">
+    <div :class="containerClasses">
         <div ref="example" class="live-example__example user-background">
             <div v-if="templateLanguage === 'vue'">
                 <live-vue-code :components :template :livedata :livemethods></live-vue-code>
