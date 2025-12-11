@@ -45,6 +45,10 @@ Om exemplet behöver spara ett värde (till exempel `v-model`) så skickas detta
 
 Om exemplet behöver köra en metod så skickas detta in genom `livemethods`.
 
+#### `forceSingleColumn` (optional)
+
+Om exemplets exempelyta hindras av kontrollytan i den högra kolumnen går det att ange `forceSingleColumn` för att forcera exemplet att visas i en kolumn.
+
 ### Konfigurera exemplet
 
 För att skapa ett konfigurerbart exempel börjar vi med att skapa en ny komponent `AwesomeComponentLiveExample.vue`.
