@@ -53,7 +53,7 @@ export default defineComponent({
                 return {};
             },
         },
-        forceFullWidth: {
+        forceSingleColumn: {
             type: Boolean,
             required: false,
         },
@@ -68,8 +68,8 @@ export default defineComponent({
     computed: {
         containerClasses(): string[] {
             const classes = ["live-example__container"];
-            if (this.forceFullWidth) {
-                classes.push("live-example__container--force-full-width");
+            if (this.forceSingleColumn) {
+                classes.push("live-example__container--single-column");
             }
             return classes;
         },
