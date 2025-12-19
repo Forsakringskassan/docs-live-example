@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.4.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.3.0...v2.4.0) (2025-12-19)
+
+### Features
+
+* new `forceSingleColumn` prop in `LiveExample` ([3dc1d19](https://github.com/Forsakringskassan/docs-live-example/commit/3dc1d19b20d90c8865ba01fe6269595c2ec1e09e))
+
 ## [2.3.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.2.0...v2.3.0) (2025-12-05)
 
 ### Features
