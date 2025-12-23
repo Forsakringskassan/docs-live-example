@@ -23,7 +23,7 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
         grid-template-columns: minmax(0, 1fr);
         grid-template-areas: "example" "controls" "code";
 
-        :not(&--single-column) {
+        &:not(&--single-column) {
             @container example-container (width >= #{$controls-breakpoint}) {
                 grid-template-columns: 1fr var(--live-example-controls-width);
                 grid-template-areas: "example controls" "code code";
