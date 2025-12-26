@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.4.1](https://github.com/Forsakringskassan/docs-live-example/compare/v2.4.0...v2.4.1) (2025-12-26)
+
+### Bug Fixes
+
+* examples containing components using grids not displaying properly ([dea02e4](https://github.com/Forsakringskassan/docs-live-example/commit/dea02e444ffebf9280be0d46fea038fafc7e6cba))
+
 ## [2.4.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.3.0...v2.4.0) (2025-12-19)
 
 ### Features
