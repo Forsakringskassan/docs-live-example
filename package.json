@@ -97,7 +97,7 @@
     "@types/jest": "30.0.0",
     "@types/node": "20.19.29",
     "esbuild": "0.27.2",
-    "html-validate": "10.5.0",
+    "html-validate": "10.6.0",
     "html-validate-vue": "7.4.1",
     "npm-pkg-lint": "4.3.1",
     "npm-run-all2": "8.0.4",
