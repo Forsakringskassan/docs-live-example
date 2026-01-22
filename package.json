@@ -104,7 +104,7 @@
     "rimraf": "6.1.2",
     "sass": "1.97.2",
     "typescript": "5.9.3",
-    "vue": "3.5.26",
+    "vue": "3.5.27",
     "vue-tsc": "3.2.2"
   },
   "peerDependencies": {
