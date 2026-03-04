@@ -92,7 +92,7 @@
     "@forsakringskassan/eslint-config-vue": "13.4.1",
     "@forsakringskassan/jest-config": "30.1.1",
     "@forsakringskassan/prettier-config": "3.3.5",
-    "@html-validate/release-scripts": "7.1.0",
+    "@html-validate/release-scripts": "7.1.15",
     "@tsconfig/node20": "20.1.9",
     "@types/jest": "30.0.0",
     "@types/node": "20.19.35",
