@@ -4,7 +4,7 @@ const vuePlugin = require("esbuild-plugin-vue3");
 const sass = require("sass");
 
 async function build() {
-    const pkg = JSON.parse(await fs.readFile("package.json", "utf-8"));
+    const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
     const { peerDependencies } = pkg;
 
     const options = {
@@ -32,13 +32,14 @@ async function build() {
     console.log(await esbuild.analyzeMetafile(result.metafile));
 
     const sassResult = await sass.compileAsync("main.scss");
-    await fs.writeFile("dist/main.css", sassResult.css, "utf-8");
+    await fs.writeFile("dist/main.css", sassResult.css, "utf8");
 
     const pkgJson = (type) => JSON.stringify({ type }, null, 2);
-    await fs.writeFile("dist/cjs/package.json", pkgJson("commonjs"), "utf-8");
-    await fs.writeFile("dist/esm/package.json", pkgJson("module"), "utf-8");
+    await fs.writeFile("dist/cjs/package.json", pkgJson("commonjs"), "utf8");
+    await fs.writeFile("dist/esm/package.json", pkgJson("module"), "utf8");
 }
 
+/* eslint-disable-next-line unicorn/prefer-top-level-await -- technical debt, this still runs as commonjs, should be migrated to esm */
 build().catch((err) => {
     console.error(err);
     process.exitCode = 1;
