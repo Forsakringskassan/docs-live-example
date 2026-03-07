@@ -77,10 +77,10 @@ export function expandAnimation(element: HTMLElement): ExpandAnimation {
             onAnimationFinish(false);
         };
 
-        animation.oncancel = () => {
+        animation.addEventListener("cancel", () => {
             element.classList.remove(ClassNames.COLLAPSING);
             isClosing = false;
-        };
+        });
     }
 
     function open(): void {
@@ -121,10 +121,10 @@ export function expandAnimation(element: HTMLElement): ExpandAnimation {
             onAnimationFinish(true);
         };
 
-        animation.oncancel = () => {
+        animation.addEventListener("cancel", () => {
             element.classList.remove(ClassNames.EXPANDING);
             isExpanding = false;
-        };
+        });
     }
 
     function onAnimationFinish(open: boolean): void {

@@ -8,7 +8,7 @@ export interface Attributes {
 
 export type Children = string | string[];
 
-const voidElements = [
+const voidElements = new Set([
     "area",
     "base",
     "br",
@@ -23,7 +23,7 @@ const voidElements = [
     "source",
     "track",
     "wbr",
-];
+]);
 
 function unpackArgs(
     args:
@@ -82,10 +82,9 @@ function serializeAttribute(
         return value ? `${prefix}${key}` : [];
     }
     return Object.entries(value)
-        .map(([nestedKey, value]) => {
+        .flatMap(([nestedKey, value]) => {
             return serializeAttribute(nestedKey, value, `${prefix}${key}-`);
         })
-        .flat()
         .filter(Boolean);
 }
 
@@ -123,7 +122,7 @@ export function createElement(
     const { attributes, children } = unpackArgs(args);
     const attrs = serializeAttributes(attributes);
 
-    if (voidElements.includes(tagName)) {
+    if (voidElements.has(tagName)) {
         return `<${tagName}${attrs}>`;
     } else {
         const content = serializeChildren(children);
