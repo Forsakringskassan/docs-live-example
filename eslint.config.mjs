@@ -13,6 +13,7 @@ export default [
             "**/dist/**",
             "**/node_modules/**",
             "**/temp/**",
+            "**/public/**",
         ],
     }),
 
@@ -40,6 +41,15 @@ export default [
         name: "local",
         rules: {
             "vue/no-restricted-block": "off",
+        },
+    },
+
+    {
+        name: "local/dist",
+        files: ["**/local/index.js"],
+        rules: {
+            /* depends on dist folder being built */
+            "import/no-unresolved": "off",
         },
     },
 ];
