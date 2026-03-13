@@ -48,7 +48,9 @@
     "lint": "run-s prettier:check eslint html-validate",
     "lint:fix": "run-s prettier:write eslint:fix",
     "eslint": "eslint --cache .",
-    "eslint:fix": "eslint --fix ."
+    "eslint:fix": "eslint --fix .",
+    "prestart": "npm run build",
+    "start": "node ./scripts/serve.mjs"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -75,6 +77,7 @@
     "highlight.js": "11.11.1"
   },
   "devDependencies": {
+    "@fkui/tsconfig": "6.39.0",
     "@forsakringskassan/commitlint-config": "3.3.8",
     "@forsakringskassan/eslint-config": "14.0.4",
     "@forsakringskassan/eslint-config-cli": "14.0.0",
@@ -88,6 +91,7 @@
     "@tsconfig/node20": "20.1.9",
     "@types/jest": "30.0.0",
     "@types/node": "20.19.37",
+    "cypress": "15.12.0",
     "esbuild": "0.27.4",
     "html-validate": "10.11.2",
     "html-validate-vue": "8.1.0",
