@@ -1,6 +1,8 @@
 name: Build
 
 on: [push, pull_request]
+permissions:
+    contents: read
 
 jobs:
     build:
@@ -40,3 +42,32 @@ jobs:
                   npm ls prettier
             - name: Jest
               run: node --experimental-vm-modules node_modules/jest/bin/jest.js
+    cypress-e2e:
+        name: Cypress E2E Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+            - name: Use Node.js 22.x
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22.x
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: npm run build
+            - name: Cypress E2E tests
+              uses: cypress-io/github-action@v6
+              with:
+                  summary-title: "E2E tests"
+                  start: npm start
+                  build: npx cypress info
+                  browser: chrome
+                  wait-on: "http://127.0.0.1:8080"
+                  quiet: true
+            - uses: actions/upload-artifact@v5
+              if: always()
+              with:
+                  name: cypress-e2e-screenshots
+                  path: cypress/screenshots
+                  if-no-files-found: ignore
