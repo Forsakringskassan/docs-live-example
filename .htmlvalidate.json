@@ -2,6 +2,7 @@
     "plugins": ["html-validate-vue", "./htmlvalidate/index.js"],
     "extends": [
         "html-validate:recommended",
+        "html-validate:prettier",
         "html-validate-vue:recommended",
         "@forsakringskassan/docs-live-example:recommended"
     ],
