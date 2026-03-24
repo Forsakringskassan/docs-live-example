@@ -84,7 +84,9 @@ function onToggleCode(): void {
             :aria-expanded="animation.isOpen ? 'true' : 'false'"
             @click="onToggleCode"
         >
-            <i class="icon icon--code"></i>
+            <svg focusable="false" class="icon" aria-hidden="true">
+                <use href="#live-example-icon-code"></use>
+            </svg>
             {{ codeToggleText }}
         </button>
     </div>
@@ -123,6 +125,17 @@ function onToggleCode(): void {
         </form>
         <!-- eslint-disable-next-line vue/no-v-html -- expected to show highlighted markup -->
         <pre v-html="sourcecode"></pre>
+    </div>
+
+    <div aria-hidden="true" style="display: none">
+        <svg xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <symbol id="live-example-icon-code" viewBox="0 0 512 512">
+                <path
+                    fill="currentColor"
+                    d="M200 354L102 256L200 158L171 128L43 256L171 384L200 354ZM312 354L410 256L312 158L341 128L469 256L341 384L312 354Z"
+                />
+            </symbol>
+        </svg>
     </div>
 </template>
 

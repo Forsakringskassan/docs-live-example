@@ -29,6 +29,15 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
                 grid-template-areas: "example controls" "code code";
             }
         }
+
+        .icon {
+            display: inline-block;
+            height: 1rem;
+            max-height: 100%;
+            max-width: 100%;
+            pointer-events: none;
+            width: 1rem;
+        }
     }
 
     &__example {
@@ -61,6 +70,10 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
 
     &__code-toggle {
         padding-left: var(--live-example-space);
+
+        .icon {
+            margin-right: 0.5rem;
+        }
     }
 
     &__code .live-example__code-toggle button {
