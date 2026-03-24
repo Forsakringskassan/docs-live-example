@@ -7,9 +7,11 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
 
 :root {
     --live-example-border-width: 1px;
+    --live-example-border-color: #ddddde;
     --live-example-space: 1.5rem;
     --live-example-controls-width: #{$controls-width};
     --live-example-button-text-color: #1b1e23;
+    --live-example-code-background: #f4f4f4;
 }
 
 .code-preview {
@@ -19,7 +21,7 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
 
 .live-example {
     &__container {
-        border: var(--live-example-border-width) solid #ddddde;
+        border: var(--live-example-border-width) solid var(--live-example-border-color);
         border-radius: 4px;
         display: grid;
         grid-template-columns: minmax(0, 1fr);
@@ -42,13 +44,13 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
     &__controls {
         grid-area: controls;
         padding: var(--live-example-space);
-        border-left: var(--live-example-border-width) solid #ddddde;
+        border-left: var(--live-example-border-width) solid var(--live-example-border-color);
     }
 
     &__code {
         grid-area: code;
-        border-top: var(--live-example-border-width) solid #ddddde;
-        background-color: #f4f4f4;
+        border-top: var(--live-example-border-width) solid var(--live-example-border-color);
+        background-color: var(--live-example-code-background);
 
         pre {
             margin: 0;
@@ -80,6 +82,6 @@ $controls-breakpoint: math.div($controls-width, $controls-ratio);
         display: flex;
         align-items: center;
         margin: 0.75rem var(--live-example-space) 0 var(--live-example-space);
-        border-bottom: var(--live-example-border-width) solid #ddddde;
+        border-bottom: var(--live-example-border-width) solid var(--live-example-border-color);
     }
 }
