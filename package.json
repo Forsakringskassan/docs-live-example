@@ -1,6 +1,6 @@
 {
   "name": "@forsakringskassan/docs-live-example",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Components used for live examples",
   "keywords": [
     "documentation"
@@ -71,7 +71,7 @@
       ".ts"
     ],
     "preset": "@forsakringskassan/jest-config/esm"
- },
+  },
   "dependencies": {
     "esbuild-plugin-vue3": "0.5.1",
     "highlight.js": "11.11.1"

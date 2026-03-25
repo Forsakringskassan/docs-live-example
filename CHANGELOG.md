@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2.4.2](https://github.com/Forsakringskassan/docs-live-example/compare/v2.4.1...v2.4.2) (2026-03-25)
+
+### Bug Fixes
+
+* change class on toggle code button (refs SFKUI-7739) ([03c228e](https://github.com/Forsakringskassan/docs-live-example/commit/03c228e8f2e9983de20fe3a2b4f0d3ebbd6fe59f))
+
 ## [2.4.1](https://github.com/Forsakringskassan/docs-live-example/compare/v2.4.0...v2.4.1) (2025-12-26)
 
 ### Bug Fixes
