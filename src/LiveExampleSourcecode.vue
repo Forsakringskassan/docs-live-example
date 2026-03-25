@@ -79,12 +79,12 @@ function onToggleCode(): void {
     <div class="live-example__code-toggle">
         <button
             type="button"
-            class="button button--discrete"
+            class="code-preview__button"
             :aria-controls="id('code-expand')"
             :aria-expanded="animation.isOpen ? 'true' : 'false'"
             @click="onToggleCode"
         >
-            <i class="icon icon--code"></i>
+            <i class="docs-icon icon--code"></i>
             {{ codeToggleText }}
         </button>
     </div>
