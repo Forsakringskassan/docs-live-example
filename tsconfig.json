@@ -1,16 +1,19 @@
 {
     "extends": "@tsconfig/node20/tsconfig.json",
     "compilerOptions": {
+        /* ts-jest hardcodes deprecated moduleResolution node10 */
+        "ignoreDeprecations": "6.0",
         "rootDir": "./src",
         "outDir": "./dist",
         "emitDeclarationOnly": true,
         "sourceMap": true,
         "lib": ["es2023", "dom", "dom.iterable"],
+        "types": ["jest"],
         "module": "esnext",
         "declaration": true,
         "declarationDir": "./dist",
         "strict": true,
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "isolatedModules": true
     },
     "include": ["./src/**/*.ts", "./src/**/*.vue"]

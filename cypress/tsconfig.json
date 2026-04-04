@@ -1,8 +1,9 @@
 {
-    "extends": ["@fkui/tsconfig/recommended", "@fkui/tsconfig/cypress"],
+    "extends": ["@fkui/tsconfig/cypress"],
     "compilerOptions": {
-        "types": ["cypress", "node"],
-        "rootDir": ".."
+        /* cypress enabled deprecated downlevelIteration */
+        "ignoreDeprecations": "6.0",
+        "rootDir": "."
     },
     "include": ["**/*.ts"]
 }
