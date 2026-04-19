@@ -91,7 +91,7 @@
     "@tsconfig/node20": "20.1.9",
     "@types/jest": "30.0.0",
     "@types/node": "20.19.39",
-    "cypress": "15.13.1",
+    "cypress": "15.14.0",
     "esbuild": "0.28.0",
     "html-validate": "10.13.1",
     "html-validate-vue": "8.2.0",
