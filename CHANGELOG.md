@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [3.0.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.4.2...v3.0.0) (2026-05-15)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** NodeJS v22 or later is now required.
+
+### Features
+
+* **deps:** require nodejs v22 or later ([1139506](https://github.com/Forsakringskassan/docs-live-example/commit/11395068e0e7589e19fbe045b6b8097be3f330d7))
+
 ## [2.4.2](https://github.com/Forsakringskassan/docs-live-example/compare/v2.4.1...v2.4.2) (2026-03-25)
 
 ### Bug Fixes
