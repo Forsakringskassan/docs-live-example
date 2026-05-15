@@ -1,20 +1,26 @@
 {
-    "extends": "@tsconfig/node20/tsconfig.json",
+    "extends": [
+        "@tsconfig/recommended",
+        "@tsconfig/node22",
+        "@tsconfig/strictest"
+    ],
     "compilerOptions": {
         /* ts-jest hardcodes deprecated moduleResolution node10 */
         "ignoreDeprecations": "6.0",
+
         "rootDir": "./src",
         "outDir": "./dist",
+        "declarationDir": "./dist",
+
+        "module": "esnext",
+        "moduleResolution": "bundler",
         "emitDeclarationOnly": true,
         "sourceMap": true,
-        "lib": ["es2023", "dom", "dom.iterable"],
-        "types": ["jest"],
-        "module": "esnext",
         "declaration": true,
-        "declarationDir": "./dist",
-        "strict": true,
-        "moduleResolution": "bundler",
-        "isolatedModules": true
+        "types": ["jest"],
+
+        /* technical debt */
+        "noPropertyAccessFromIndexSignature": false
     },
     "include": ["./src/**/*.ts", "./src/**/*.vue"]
 }
