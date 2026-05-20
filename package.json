@@ -77,7 +77,7 @@
     "highlight.js": "11.11.1"
   },
   "devDependencies": {
-    "@fkui/tsconfig": "6.46.0",
+    "@fkui/tsconfig": "6.47.0",
     "@forsakringskassan/commitlint-config": "3.6.4",
     "@forsakringskassan/eslint-config": "14.1.27",
     "@forsakringskassan/eslint-config-cli": "14.1.20",
