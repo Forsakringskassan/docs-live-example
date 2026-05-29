@@ -27,16 +27,6 @@ export default [
     jestConfig(),
     vueConfig(),
 
-    defineConfig({
-        name: "local/technical-debt",
-        files: ["**/*.{cjs,mjs}"],
-        rules: {
-            "import/extensions": "off",
-            "import/no-unresolved": "off",
-            "import/no-named-as-default-member": "off",
-        },
-    }),
-
     {
         name: "local",
         rules: {
@@ -49,7 +39,7 @@ export default [
         files: ["**/local/index.js"],
         rules: {
             /* depends on dist folder being built */
-            "import/no-unresolved": "off",
+            "import-x/no-unresolved": "off",
         },
     },
 ];
