@@ -18,7 +18,7 @@ jobs:
             - name: Install dependencies
               run: npm ci
             - name: Prettier
-              uses: Forsakringskassan/prettier-config@a5a8b5f4f783ba2524b87fc8c8b78ebebc02bc23 # v3.6.2
+              uses: Forsakringskassan/prettier-config@f61bbc4289eafc516f5f88f43e5c9ef5c1bd5905 # v3.6.3
             - name: ESLint
               if: success() || failure()
               uses: Forsakringskassan/eslint-config@d8a1870c4c203d66a62df0d27ee5f52c0059801a # v15.0.12
