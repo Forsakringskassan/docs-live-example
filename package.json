@@ -93,7 +93,7 @@
     "@tsconfig/strictest": "2.0.8",
     "@types/jest": "30.0.0",
     "@types/node": "22.19.20",
-    "cypress": "15.16.0",
+    "cypress": "15.17.0",
     "esbuild": "0.28.1",
     "html-validate": "11.5.3",
     "html-validate-vue": "9.3.1",
