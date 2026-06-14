@@ -92,7 +92,7 @@
     "@tsconfig/recommended": "1.0.13",
     "@tsconfig/strictest": "2.0.8",
     "@types/jest": "30.0.0",
-    "@types/node": "22.19.20",
+    "@types/node": "22.19.21",
     "cypress": "15.17.0",
     "esbuild": "0.28.1",
     "html-validate": "11.5.3",
