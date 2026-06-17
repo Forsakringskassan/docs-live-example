@@ -34,23 +34,24 @@
     "!**/*.spec.d.ts"
   ],
   "scripts": {
-    "clean": "rimraf dist",
     "prebuild": "rimraf dist",
     "build": "vue-tsc && node build.js",
-    "html-validate": "html-validate --ext vue,html src",
-    "prepack": "release-prepack --bundle",
-    "postpack": "release-postpack package.json",
-    "prepublishOnly": "release-prepublish --bundle",
-    "pretest": "run-s prettier:check eslint html-validate",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "prettier:check": "prettier --check .",
-    "prettier:write": "prettier --write .",
-    "lint": "run-s prettier:check eslint html-validate",
-    "lint:fix": "run-s prettier:write eslint:fix",
+    "clean": "rimraf dist",
     "eslint": "eslint --cache .",
     "eslint:fix": "eslint --fix .",
+    "html-validate": "html-validate --ext vue,html src",
+    "lint": "run-s prettier:check eslint html-validate",
+    "lint:fix": "run-s prettier:write eslint:fix",
+    "prepack": "release-prepack --bundle",
+    "postpack": "release-postpack package.json",
+    "prepare": "commitlint-config",
+    "prepublishOnly": "release-prepublish --bundle",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
     "prestart": "npm run build",
-    "start": "node ./scripts/serve.mjs"
+    "start": "node ./scripts/serve.mjs",
+    "pretest": "run-s prettier:check eslint html-validate",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
@@ -78,7 +79,7 @@
   },
   "devDependencies": {
     "@fkui/tsconfig": "6.50.0",
-    "@forsakringskassan/commitlint-config": "3.6.9",
+    "@forsakringskassan/commitlint-config": "4.0.0",
     "@forsakringskassan/eslint-config": "15.0.17",
     "@forsakringskassan/eslint-config-cli": "15.0.0",
     "@forsakringskassan/eslint-config-jest": "15.0.0",
@@ -117,5 +118,12 @@
   },
   "engines": {
     "node": "^22.16 || >= 24"
+  },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "cypress": true,
+    "esbuild": true,
+    "fsevents": false,
+    "unrs-resolver": false
   }
 }
