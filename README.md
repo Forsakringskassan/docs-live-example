@@ -75,14 +75,10 @@ export default defineComponent({
     },
     computed: {
         livedata(): unknown {
-            return {
-                /* data used by generated code */
-            };
+            return {/* data used by generated code */};
         },
         components(): unknown {
-            return {
-                /* components used by generated code */
-            };
+            return {/* components used by generated code */};
         },
         template(): string {
             return /* HTML */ ` <div>Hello World!</div> `;
