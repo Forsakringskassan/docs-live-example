@@ -1,3 +1,4 @@
+import { expect, it } from "@jest/globals";
 import { highlight } from "./highlight";
 
 it("should be formatted and highlighted", async () => {

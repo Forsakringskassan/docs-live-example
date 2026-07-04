@@ -1,3 +1,4 @@
+import { expect, it } from "@jest/globals";
 import { createElement } from "./create-element";
 
 it("should serialize element", () => {
