@@ -1,3 +1,4 @@
+import { beforeEach, expect, it } from "@jest/globals";
 import { getSourceCode } from "./get-source-code";
 
 const template = "original source code";

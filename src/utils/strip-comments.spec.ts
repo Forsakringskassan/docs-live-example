@@ -1,3 +1,4 @@
+import { expect, it } from "@jest/globals";
 import { stripComments } from "./strip-comments";
 
 it("should remove comments", () => {

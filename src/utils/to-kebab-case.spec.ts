@@ -1,3 +1,4 @@
+import { expect, it } from "@jest/globals";
 import { toKebabCase } from "./to-kebab-case";
 
 it("should convert strings to kebab-case", () => {
