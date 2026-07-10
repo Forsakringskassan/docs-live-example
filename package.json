@@ -95,7 +95,7 @@
     "@tsconfig/strictest": "2.0.8",
     "@types/jest": "30.0.0",
     "@types/node": "22.20.0",
-    "cypress": "15.18.0",
+    "cypress": "15.18.1",
     "esbuild": "0.28.1",
     "html-validate": "11.5.5",
     "html-validate-vue": "9.3.1",
