@@ -1,7 +1,7 @@
-const fs = require("node:fs/promises");
-const esbuild = require("esbuild");
-const vuePlugin = require("esbuild-plugin-vue3");
-const sass = require("sass");
+import fs from "node:fs/promises";
+import * as esbuild from "esbuild";
+import vuePlugin from "esbuild-plugin-vue3";
+import * as sass from "sass";
 
 async function build() {
     const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
@@ -39,8 +39,9 @@ async function build() {
     await fs.writeFile("dist/esm/package.json", pkgJson("module"), "utf8");
 }
 
-/* eslint-disable-next-line unicorn/prefer-top-level-await -- technical debt, this still runs as commonjs, should be migrated to esm */
-build().catch((err) => {
+try {
+    await build();
+} catch (err) {
     console.error(err);
     process.exitCode = 1;
-});
+}

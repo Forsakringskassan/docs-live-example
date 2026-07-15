@@ -22,11 +22,12 @@ export async function getSourceCode(
     options: SourceCodeOptions,
 ): Promise<string> {
     const { language, template, element } = options;
+
     if (language === "original") {
         return await highlight(template);
-    } else {
-        const html = element.innerHTML;
-        const uncommented = stripComments(html);
-        return await highlight(uncommented);
     }
+
+    const html = element.innerHTML;
+    const uncommented = stripComments(html);
+    return await highlight(uncommented);
 }

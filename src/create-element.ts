@@ -39,11 +39,11 @@ function unpackArgs(
         const [arg0] = args;
         if (typeof arg0 === "string") {
             return { attributes: {}, children: [arg0] };
-        } else if (Array.isArray(arg0)) {
-            return { attributes: {}, children: arg0 };
-        } else {
-            return { attributes: arg0, children: [] };
         }
+        if (Array.isArray(arg0)) {
+            return { attributes: {}, children: arg0 };
+        }
+        return { attributes: arg0, children: [] };
     }
     const [arg0, arg1] = args;
     return { attributes: arg0, children: Array.isArray(arg1) ? arg1 : [arg1] };
@@ -52,9 +52,8 @@ function unpackArgs(
 function serializeChildren(children: string[]): string {
     if (children.length > 0) {
         return ` ${children.join(" ")} `;
-    } else {
-        return "";
     }
+    return "";
 }
 
 function serializeAttribute(
@@ -68,9 +67,8 @@ function serializeAttribute(
             .filter(Boolean);
         if (tokens.length > 0) {
             return `${prefix}${key}="${tokens.join(" ")}"`;
-        } else {
-            return [];
         }
+        return [];
     }
     if (value === null || value === undefined) {
         return [];
@@ -96,9 +94,8 @@ function serializeAttributes(attrs: Attributes): string {
     const flat = kv.flat();
     if (flat.length > 0) {
         return ` ${kv.flat().join(" ")}`;
-    } else {
-        return "";
     }
+    return "";
 }
 
 /* eslint-disable @typescript-eslint/unified-signatures -- technical debt */
@@ -124,8 +121,8 @@ export function createElement(
 
     if (voidElements.has(tagName)) {
         return `<${tagName}${attrs}>`;
-    } else {
-        const content = serializeChildren(children);
-        return `<${tagName}${attrs}>${content}</${tagName}>`;
     }
+
+    const content = serializeChildren(children);
+    return `<${tagName}${attrs}>${content}</${tagName}>`;
 }
