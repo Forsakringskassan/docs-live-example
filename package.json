@@ -80,7 +80,7 @@
   "devDependencies": {
     "@fkui/tsconfig": "6.52.0",
     "@forsakringskassan/commitlint-config": "4.2.7",
-    "@forsakringskassan/eslint-config": "15.8.0",
+    "@forsakringskassan/eslint-config": "15.8.2",
     "@forsakringskassan/eslint-config-cli": "15.8.1",
     "@forsakringskassan/eslint-config-jest": "15.8.0",
     "@forsakringskassan/eslint-config-typescript": "15.8.0",
