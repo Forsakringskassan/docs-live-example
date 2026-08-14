@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "esbuild-plugin-vue3": "0.5.1",
-    "highlight.js": "11.11.1"
+    "highlight.js": "11.11.2"
   },
   "devDependencies": {
     "@fkui/tsconfig": "6.52.0",
