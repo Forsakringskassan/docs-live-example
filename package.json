@@ -98,7 +98,7 @@
     "@typescript/native": "npm:typescript@7.0.2",
     "cypress": "15.20.1",
     "esbuild": "0.28.2",
-    "html-validate": "11.7.0",
+    "html-validate": "11.8.0",
     "html-validate-vue": "9.3.1",
     "npm-pkg-lint": "5.2.2",
     "npm-run-all2": "9.0.3",
