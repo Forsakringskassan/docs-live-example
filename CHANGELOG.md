@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.0.1](https://github.com/Forsakringskassan/docs-live-example/compare/v3.0.0...v3.0.1) (2026-08-21)
+
+### Bug Fixes
+
+* **deps:** update dependency highlight.js to v11.11.2 ([90cca43](https://github.com/Forsakringskassan/docs-live-example/commit/90cca434ec3cbf9fe096b1fffcb92307fd3544b9))
+* **deps:** update dependency highlight.js to v11.12.0 ([c2d3fd2](https://github.com/Forsakringskassan/docs-live-example/commit/c2d3fd2ecce79917b013ae80f43cc614073de663))
+
 ## [3.0.0](https://github.com/Forsakringskassan/docs-live-example/compare/v2.4.2...v3.0.0) (2026-05-15)
 
 ### ⚠ BREAKING CHANGES
