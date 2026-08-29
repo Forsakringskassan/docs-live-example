@@ -96,7 +96,7 @@
     "@types/jest": "30.0.0",
     "@types/node": "22.20.1",
     "@typescript/native": "npm:typescript@7.0.2",
-    "cypress": "15.21.0",
+    "cypress": "15.21.1",
     "esbuild": "0.28.2",
     "html-validate": "11.10.0",
     "html-validate-vue": "9.3.1",
