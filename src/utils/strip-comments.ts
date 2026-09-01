@@ -3,5 +3,13 @@
  */
 export function stripComments(html: string): string {
     const commentPattern = /<!--.*?-->/g;
-    return html.replaceAll(commentPattern, "");
+    let previous: string;
+    let current = html;
+
+    do {
+        previous = current;
+        current = current.replace(commentPattern, "");
+    } while (current !== previous);
+
+    return current;
 }
