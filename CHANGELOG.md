@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.0.2](https://github.com/Forsakringskassan/docs-live-example/compare/v3.0.1...v3.0.2) (2026-09-04)
+
+### Bug Fixes
+
+* all colors should be in css variables ([f3a635b](https://github.com/Forsakringskassan/docs-live-example/commit/f3a635bfcba2d81f767385fb1815a8153bdc3b11))
+* component should not contain references to fkui variables ([f43dbcc](https://github.com/Forsakringskassan/docs-live-example/commit/f43dbccee4de1f028c04cf564f302aaa157793eb))
+
 ## [3.0.1](https://github.com/Forsakringskassan/docs-live-example/compare/v3.0.0...v3.0.1) (2026-08-21)
 
 ### Bug Fixes
