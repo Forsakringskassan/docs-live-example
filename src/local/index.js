@@ -1,31 +1,24 @@
-import { computed, createApp, defineComponent } from "vue";
+import { computed, createApp, ref } from "vue";
 import { LiveExample, createElement } from "../../dist/esm/index";
-
-const HelloWorld = defineComponent({
-    template: `
-        <div style="border:1px solid hotpink;">
-            <p>Min vue-komponent</p>
-        </div>
-	`,
-});
 
 createApp({
     components: {
         LiveExample,
     },
     setup() {
-        const components = computed(() => {
-            return {
-                HelloWorld,
-            };
-        });
+        const tagName = ref("div");
+        const placeholderText = ref(false);
 
         const template = computed(() => {
-            return createElement("HelloWorld");
+            const message = placeholderText.value
+                ? "Lorem ipsum dolor sit amet"
+                : "Hello World!";
+            return createElement(tagName.value, message);
         });
 
         return {
-            components,
+            tagName,
+            placeholderText,
             template,
         };
     },

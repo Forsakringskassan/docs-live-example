@@ -18,7 +18,22 @@
     </head>
     <body>
         <div id="app">
-            <live-example :components :template></live-example>
+            <live-example :template>
+                <div>
+                    <label for="config-element"> Element </label>
+                    <select id="config-element" v-model="tagName">
+                        <option value="div">div</option>
+                        <option value="p">p</option>
+                        <option value="em">em</option>
+                    </select>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" v-model="placeholderText" :value="true" />
+                        Use placeholder text
+                    </label>
+                </div>
+            </live-example>
         </div>
 
         <script type="module" src="./index.js"></script>
