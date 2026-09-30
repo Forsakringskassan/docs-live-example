@@ -1,66 +1,105 @@
 # `@forsakringskassan/docs-live-example`
 
-`live-example` är en Vue-komponent som används för att presentera ett levande exempel samt tillhörande markup för att reproducera exemplet.
+`@forsakringskassan/docs-live-example` innehåller `live-example`, en Vue-komponent
+som används för att presentera ett levande, interaktivt exempel tillsammans med
+den markup som krävs för att reproducera det. Paketet är avsett för dig som
+skriver komponentdokumentation och vill låta läsaren experimentera med ett
+exempel direkt i dokumentationen, istället för att bara visa en statisk
+kodsnutt.
 
 Komponenten består av tre ytor:
 
-- exempelyta: innehåller det kompilerade exemplet.
-- kontrollyta: innehåller de inmatningsfält som används för att konfigurera exemplet.
-- kodyta: visar HTML-markup och Vue-template för exemplet (om Vue-komponenter används).
+- **exempelyta**: innehåller det kompilerade exemplet.
+- **kontrollyta**: innehåller de inmatningsfält som används för att konfigurera exemplet.
+- **kodyta**: visar HTML-markup och Vue-template för exemplet (om Vue-komponenter används).
 
-Eftersom `live-example` kompileras i runtime så kan man direkt modifiera exemplet och den markup som visas genom att använda de inmatningsfält som lagts till i kontrollytan.
+Eftersom `live-example` kompileras i runtime går det att direkt modifiera
+exemplet och den markup som visas genom att använda de inmatningsfält som
+lagts till i kontrollytan.
 
-## Användning
+## Kom igång
 
-Installera paketet genom att köra:
+1. Installera paketet som en utvecklingsberoende:
 
-`npm install --save-dev @forsakringskassan/docs-live-example`
+    ```sh
+    npm install --save-dev @forsakringskassan/docs-live-example
+    ```
 
-Om du använder `html-validate` bör du även uppdatera din `.htmlvalidate.json` med följande rader för att registrera `live-example` elementet:
+2. Importera `LiveExample` och lägg till den i din komponent:
 
-```json
-"extends": [
-    "@forsakringskassan/docs-live-example/htmlvalidate:recommended",
-],
-"plugins": [
-    "@forsakringskassan/docs-live-example/htmlvalidate"
-],
+    ```ts
+    import { LiveExample } from "@forsakringskassan/docs-live-example";
+    ```
+
+3. Rendera komponenten med minst en `template`:
+
+    ```html
+    <live-example template="<div>Hello World!</div>" />
+    ```
+
+Fortsätt läsa nedan för hur du bygger ett komplett, konfigurerbart exempel och
+hur du kopplar in `html-validate`.
+
+### Importera från paketet
+
+Paketet exporterar två saker:
+
+```ts
+import {
+    LiveExample,
+    createElement,
+} from "@forsakringskassan/docs-live-example";
 ```
 
-### Props
+- `LiveExample` — Vue-komponenten som renderar exempel-, kontroll- och kodytan.
+- `createElement` — en hjälpfunktion för att bygga upp markup som skickas till `template` (se [`createElement`](#createelement) nedan).
 
-#### `template`
+Stilmallen för komponenten importeras separat:
 
-För att generera ett exempel så används `template` för att skicka in markup.
+```ts
+import "@forsakringskassan/docs-live-example/dist/main.css";
+```
 
-#### `components` (optional)
+### `html-validate`
 
-De Vue-komponenter som används i markup som skickas in till `template` måste läggas till i `components`.
+Om du använder `html-validate` för att validera dokumentationens markup bör du
+registrera `live-example`-elementet genom att lägga till följande i din
+`.htmlvalidate.json`:
 
-#### `livedata` (optional)
+```json
+{
+    "extends": [
+        "@forsakringskassan/docs-live-example/htmlvalidate:recommended"
+    ],
+    "plugins": ["@forsakringskassan/docs-live-example/htmlvalidate"]
+}
+```
 
-Om exemplet behöver spara ett värde (till exempel `v-model`) så skickas detta in genom `livedata`.
+`html-validate` är en valfri (peer) dependency — konfigurationen ovan behövs
+bara om ditt projekt redan använder `html-validate`.
 
-#### `livemethods` (optional)
+## Props
 
-Om exemplet behöver köra en metod så skickas detta in genom `livemethods`.
+| Prop                | Typ                         | Krävs | Standardvärde | Beskrivning                                                                               |
+| ------------------- | --------------------------- | :---: | ------------- | ----------------------------------------------------------------------------------------- |
+| `template`          | `string`                    |  Ja   | —             | Markup (HTML eller Vue-template) som renderas i exempelytan.                              |
+| `components`        | `object`                    |  Nej  | `{}`          | Vue-komponenter som används i `template` och som ska registreras lokalt för exemplet.     |
+| `livedata`          | `object`                    |  Nej  | `{}`          | Data som exemplet behöver komma åt och kunna uppdatera, till exempel för `v-model`.       |
+| `livemethods`       | `object`                    |  Nej  | `{}`          | Metoder som exemplet behöver kunna anropa.                                                |
+| `forceSingleColumn` | `boolean`                   |  Nej  | `false`       | Forcerar exemplet att visas i en kolumn, användbart när kontrollytan hindrar exempelytan. |
+| `language`          | `"vue" \| "html" \| "auto"` |  Nej  | `"auto"`      | Anger hur `template` ska tolkas. Lämna som `"auto"` om du inte har ett specifikt behov.   |
 
-#### `forceSingleColumn` (optional)
+## Konfigurera exemplet
 
-Om exemplets exempelyta hindras av kontrollytan i den högra kolumnen går det att ange `forceSingleColumn` för att forcera exemplet att visas i en kolumn.
+För att skapa ett konfigurerbart exempel, skapa en ny komponent
+`AwesomeComponentLiveExample.vue`. Vi rekommenderar att använda `LiveExample`
+som suffix på alla live-exempel.
 
-### Konfigurera exemplet
-
-För att skapa ett konfigurerbart exempel börjar vi med att skapa en ny komponent `AwesomeComponentLiveExample.vue`.
-Vi rekommenderar att använda `LiveExample` som suffix på alla live-exempel.
-
-Följande boilerplate kan användas:
+Följande boilerplate kan användas som utgångspunkt:
 
 ```vue static
 <template>
-    <live-example :components :template :livedata>
-        <!-- Example configuration -->
-    </live-example>
+    <live-example :components :template :livedata />
 </template>
 
 <script lang="ts">
@@ -70,25 +109,22 @@ import { LiveExample } from "@forsakringskassan/docs-live-example";
 export default defineComponent({
     name: "AwesomeComponentLiveExample",
     components: { LiveExample },
-    data() {
-        return {};
-    },
     computed: {
-        livedata(): unknown {
-            return {/* data used by generated code */};
-        },
         components(): unknown {
             return {/* components used by generated code */};
         },
+        livedata(): unknown {
+            return {/* data used by generated code */};
+        },
         template(): string {
-            return /* HTML */ ` <div>Hello World!</div> `;
+            return /* HTML */ `<div>Hello World!</div>`;
         },
     },
 });
 </script>
 ```
 
-För att skapa en inställning lägger vi först in komponenter:
+Lägg sedan till de inmatningsfält som ska styra exemplet i kontrollytan:
 
 ```diff
      <live-example :components :template :livedata>
@@ -104,34 +140,41 @@ För att skapa en inställning lägger vi först in komponenter:
      </live-example>
 ```
 
+Lägg till motsvarande data:
+
 ```diff
-     data() {
--        return {};
++    data() {
 +        return {
 +            tagName: "div",
 +            placeholderText: false,
 +        };
-     },
++    },
+     computed: {
 ```
 
-Därefter kan vi modifiera `template` att nyttja inställningar:
+Och låt `template` använda värdena:
 
 ```diff
          template(): string {
--            return /* HTML */ ` <div>Hello World!</div> `;
+-            return /* HTML */ `<div>Hello World!</div>`;
 +            const { tagName, placeholderText } = this;
-+            const message = placeholderText ? "Lorem ipsum dolor sit amet" : "Hello World!" ;
-+            return /* HTML */ ` <${tagName}>${message}</${tagName}> `;
++            const message = placeholderText
++                ? "Lorem ipsum dolor sit amet"
++                : "Hello World!";
++            return /* HTML */ `<${tagName}>${message}</${tagName}>`;
          },
 ```
 
-Det går också med fördel att använda `createElement` (se beskrivning längre ner):
+Det går också med fördel att bygga upp markupen med `createElement` istället
+för strängmallar (se [`createElement`](#createelement) nedan):
 
 ```diff
          template(): string {
--            return /* HTML */ ` <div>Hello World!</div> `;
+-            return /* HTML */ `<div>Hello World!</div>`;
 +            const { tagName, placeholderText } = this;
-+            const message = placeholderText ? "Lorem ipsum dolor sit amet" : "Hello World!" ;
++            const message = placeholderText
++                ? "Lorem ipsum dolor sit amet"
++                : "Hello World!";
 +            return createElement(tagName, message);
          },
 ```
@@ -193,7 +236,9 @@ export default defineComponent({
 
 ## `createElement`
 
-A helper function to render the markup for the live example.
+En hjälpfunktion för att bygga upp markupen för ett exempel utan att behöva
+skriva HTML-strängar för hand. Funktionen returnerar en färdig HTML-sträng som
+kan användas direkt som `template`.
 
 ```ts
 createElement(tagName);
@@ -202,30 +247,30 @@ createElement(tagName, attributes);
 createElement(tagName, attributes, content);
 ```
 
-Create markup for a simple element:
+Skapa markup för ett enkelt element:
 
 ```ts
 createElement("div");
 // <div>
 ```
 
-Adding attributes:
+Lägg till attribut:
 
 ```ts
 createElement("div", { id: "my-awesome-id", class: ["foo", "bar"] });
 // <div id="my-awesome-id" class="foo bar">
 ```
 
-Attributes can be:
+Attribut kan vara av följande typer:
 
-- `string` - value is passed as-is: `{ key: "value" }` becomes `key="value"`.
-- `number` - value is converted to string: `{ key: 12 }` becomes `key="12"`.
-- `boolean` - key is set if value is true: `{ key: true }` becomes `key` and `{ key: false }` omits the attribute.
-- `Array` - each non-empty item is joined: `{ key: ["foo", "bar"] }` becomes `key="foo bar"`.
-- `Object` - nests attributes: `{ data: { key: "value" } }` becomes `data-key="value"`.
-- `null` and `undefined` are omitted from its context, e.g. `{ key: null }` `{ key: [null] ` and `{ key: { value: null } }` are all omitted.
+- `string` — värdet skrivs ut som det är: `{ key: "value" }` blir `key="value"`.
+- `number` — värdet konverteras till en sträng: `{ key: 12 }` blir `key="12"`.
+- `boolean` — nyckeln sätts om värdet är `true`: `{ key: true }` blir `key`, `{ key: false }` utelämnar attributet helt.
+- `Array` — varje icke-tomt värde slås ihop med mellanslag: `{ key: ["foo", "bar"] }` blir `key="foo bar"`.
+- `Object` — nästlade attribut byggs ihop med bindestreck: `{ data: { key: "value" } }` blir `data-key="value"`.
+- `null` och `undefined` utelämnas alltid, oavsett var i strukturen de förekommer, t.ex. `{ key: null }`, `{ key: [null] }` och `{ key: { value: null } }` resulterar alla i att attributet/värdet hoppas över.
 
-Content can be added:
+Lägg till innehåll:
 
 ```ts
 createElement("div", "lorem ipsum");
@@ -238,7 +283,7 @@ createElement("div", [
 // <div> <h1> My Awesome Heading </h1> <p> Lorem ipsum dolor sit amet </p> </div>
 ```
 
-Combined:
+Kombinerat, attribut och innehåll samtidigt:
 
 ```ts
 createElement("div", { id: "foo" }, "lorem ipsum");
