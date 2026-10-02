@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [3.0.3](https://github.com/Forsakringskassan/docs-live-example/compare/v3.0.2...v3.0.3) (2026-10-02)
+
+### Bug Fixes
+
+* align live example controls border ([631cedd](https://github.com/Forsakringskassan/docs-live-example/commit/631ceddc5c21b9e04a4d8d6f05e4ce1c1b22766c))
+* render rounded live example backgrounds ([aba829f](https://github.com/Forsakringskassan/docs-live-example/commit/aba829f576c4d88edfb71aa4693e6a30dbf7222c))
+
 ## [3.0.2](https://github.com/Forsakringskassan/docs-live-example/compare/v3.0.1...v3.0.2) (2026-09-04)
 
 ### Bug Fixes
