@@ -4,8 +4,9 @@ import vuePlugin from "esbuild-plugin-vue3";
 import * as sass from "sass";
 
 async function build() {
-    const pkg = JSON.parse(await fs.readFile("package.json", "utf8"));
-    const { peerDependencies } = pkg;
+    const { peerDependencies } = JSON.parse(
+        await fs.readFile("package.json", "utf8"),
+    );
 
     const options = {
         entryPoints: ["src/index.ts"],
