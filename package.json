@@ -53,6 +53,13 @@
     "pretest": "run-s prettier:check eslint html-validate",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "cypress": true,
+    "esbuild": true,
+    "fsevents": false,
+    "unrs-resolver": false
+  },
   "commitlint": {
     "extends": "@forsakringskassan/commitlint-config/no-jira"
   },
@@ -87,7 +94,7 @@
     "@forsakringskassan/eslint-config-typescript-typeinfo": "15.12.0",
     "@forsakringskassan/eslint-config-vue": "15.12.1",
     "@forsakringskassan/jest-config": "30.4.7",
-    "@forsakringskassan/prettier-config": "3.7.12",
+    "@forsakringskassan/prettier-config": "3.7.13",
     "@html-validate/release-scripts": "7.6.17",
     "@jest/globals": "30.5.2",
     "@tsconfig/node22": "22.0.6",
@@ -120,12 +127,5 @@
   },
   "engines": {
     "node": "^22.16 || >= 24"
-  },
-  "allowScripts": {
-    "@parcel/watcher": false,
-    "cypress": true,
-    "esbuild": true,
-    "fsevents": false,
-    "unrs-resolver": false
   }
 }
