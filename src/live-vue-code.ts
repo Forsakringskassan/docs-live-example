@@ -25,7 +25,7 @@ export default defineComponent({
         /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
         if (!renderFunction) {
             const message = "Failed to compile Vue render function!";
-            return h("div", { style: "color: red" }, message);
+            return h("div", { class: "live-example__error" }, message);
         }
         return h(
             {
