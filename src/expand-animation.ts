@@ -1,3 +1,5 @@
+import { ref } from "vue";
+
 export interface ExpandAnimation {
     readonly isOpen: boolean;
     toggle(): void;
@@ -19,33 +21,33 @@ prefersReducedMotion.addEventListener("change", (event) => {
 
 export function expandAnimation(element: HTMLElement): ExpandAnimation {
     let animation: Animation | null = null;
-    let isOpen = false;
+    const isOpen = ref(false);
     let isClosing = false;
     let isExpanding = false;
 
     return {
         get isOpen() {
-            return isOpen;
+            return isOpen.value;
         },
         toggle() {
             if (useAnimation) {
                 element.style.overflow = "hidden";
-                if (isExpanding || isOpen) {
-                    isOpen = false;
+                if (isExpanding || isOpen.value) {
+                    isOpen.value = false;
                     shrink();
                     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- technical debt */
-                } else if (isClosing || !isOpen) {
-                    isOpen = true;
+                } else if (isClosing || !isOpen.value) {
+                    isOpen.value = true;
                     open();
                 }
                 return;
             }
 
-            if (isOpen) {
-                isOpen = false;
+            if (isOpen.value) {
+                isOpen.value = false;
                 element.setAttribute("aria-expanded", "false");
             } else {
-                isOpen = true;
+                isOpen.value = true;
                 element.setAttribute("aria-expanded", "true");
             }
         },
